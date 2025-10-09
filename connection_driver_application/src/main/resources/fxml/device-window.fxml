@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import org.controlsfx.control.*?>
+
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import ywh.fx_app.app_custom_nodes.FocusableTitledPane?>
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import ywh.fx_app.app_custom_nodes.ChangeableButton?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<StackPane fx:id="mainStackPane"
+           xmlns="http://javafx.com/javafx/21"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="ywh.fx_app.device.DeviceWindowController">
+
+
+    <ScrollPane fitToHeight="true" fitToWidth="true">
+        <VBox fx:id="centerVBox" spacing="5.0">
+            <padding>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+            </padding>
+            <ToolBar VBox.vgrow="ALWAYS" >
+                <ChangeableButton
+                        fx:id="startStopButton"
+                        styleClass="image-button"
+                        firstImageUrl="@../images/start.png"
+                        secondImageUrl="@../images/stop.png"
+                        firstText="Запустити"
+                        secondText="Зупинити"
+                        preserveRatio="false"
+                        fitWidth="25"
+                        fitHeight="25"/>
+                <Region prefWidth="2"/>
+                <MFXButton fx:id="saveAndStartButton"
+                           styleClass="image-button"
+                           onAction="#saveAndSart">
+                    <tooltip>
+                        <Tooltip text="Зберегти налаштування та перезапустити" />
+                    </tooltip>
+                    <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                            <Image url="@../images/save (2).png" />
+                        </ImageView>
+                    </graphic>
+                </MFXButton>
+            </ToolBar>
+            <!-- Поле ввода порта (только числа) -->
+
+
+            <!-- <Label text="Вікно для підтвердження:" GridPane.columnIndex="0" GridPane.rowIndex="3">
+                 <font>
+                     <Font name="System Bold" size="12.0" />
+                 </font>
+             </Label>
+             <JFXCheckBox fx:id="clarificationCB" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+-->
+            <!-- Выпадающий список для выбора режима -->
+            <GridPane hgap="5.0" vgap="5.0">
+                <FocusableTitledPane
+                        text="Статус"
+                        GridPane.columnIndex="0"
+                        GridPane.rowIndex="0"
+                >
+                    <Label fx:id="statusLabel" text="В роботі" GridPane.columnIndex="1">
+                        <graphic>
+                            <Circle fx:id="statusCircle" fill="#32ff1f" radius="8.0" stroke="BLACK"
+                                    strokeLineCap="ROUND"
+                                    strokeType="INSIDE"/>
+                        </graphic>
+                        <font>
+                            <Font name="System Bold" size="14.0"/>
+                        </font>
+                    </Label>
+                </FocusableTitledPane>
+                <MFXTextField
+                        fx:id="serialNumberField"
+                        floatingText="Серійний номер"
+                        text="5100"
+                        maxWidth="Infinity"
+                        VBox.vgrow="ALWAYS"
+                        GridPane.columnIndex="1"
+                        GridPane.rowIndex="0"
+                />
+                <MFXTextField
+                        fx:id="hostField"
+                        floatingText="Хост"
+                        text="192.168.0.100"
+                        maxWidth="Infinity"
+                        VBox.vgrow="ALWAYS"
+                        GridPane.columnIndex="0"
+                        GridPane.rowIndex="1"
+                />
+                <MFXTextField
+                        fx:id="portField"
+                        floatingText="Порт"
+                        text="5100"
+                        maxWidth="Infinity"
+                        VBox.vgrow="ALWAYS"
+                        GridPane.columnIndex="1"
+                        GridPane.rowIndex="1"
+                />
+
+                <columnConstraints>
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="150.0"/>
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="150.0"/>
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints minHeight="55.0"/>
+                    <RowConstraints minHeight="55.0"/>
+
+                </rowConstraints>
+            </GridPane>
+            <FocusableTitledPane text="Обробка результатів">
+                <CheckComboBox fx:id="modeComboBox" maxWidth="Infinity" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS"
+                               GridPane.rowIndex="4"/>
+            </FocusableTitledPane>
+            <Separator prefHeight="10.0">
+                <effect>
+                    <BoxBlur height="2.0" width="2.0"/>
+                </effect>
+            </Separator>
+
+            <fx:include fx:id="printAndFilesSettings" source="device-print-file-settings-window.fxml"/>
+            <fx:include fx:id="apiConfig" source="configs/api-config-window.fxml"/>
+
+        </VBox>
+    </ScrollPane>
+
+
+    <stylesheets>
+        <URL value="@../css/root.css"/>
+        <URL value="@../css/titled_pane_styles.css"/>
+        <URL value="@../css/box_styles.css"/>
+    </stylesheets>
+</StackPane>

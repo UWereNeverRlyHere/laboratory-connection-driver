@@ -1,0 +1,8 @@
+.VBox {
+    -fx-spacing: 5px;
+}
+
+.no-padding-box {
+    -fx-padding: 0;
+    -fx-spacing: 0;
+}

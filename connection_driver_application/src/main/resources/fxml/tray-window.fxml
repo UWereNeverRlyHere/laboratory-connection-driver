@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<VBox fx:id="trayVBox" alignment="BOTTOM_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/21.0.7" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ywh.fx_app.tray.TrayController">
+   <Label fx:id="statusLabel" maxWidth="1.7976931348623157E308" text="В роботі">
+      <graphic>
+         <Circle fx:id="statusCircle" fill="#32ff1f" radius="7.0" stroke="BLACK" strokeLineCap="ROUND" strokeType="INSIDE" />
+      </graphic>
+      <font>
+         <Font name="System Bold" size="14.0" />
+      </font>
+      <VBox.margin>
+         <Insets />
+      </VBox.margin>
+      <padding>
+         <Insets left="7.0" />
+      </padding>
+   </Label>
+
+   <JFXButton fx:id="btnLog" alignment="TOP_LEFT" maxWidth="1.7976931348623157E308" text="log">
+      <VBox.margin>
+         <Insets />
+      </VBox.margin>
+      <graphic>
+         <ImageView fitHeight="15.0" fitWidth="13.0">
+            <Image url="@../images/log.png" />
+         </ImageView>
+      </graphic></JFXButton>
+   <JFXButton fx:id="btnInfoTable" alignment="TOP_LEFT" maxWidth="1.7976931348623157E308" onAction="#openInfoTable" text="Інформаційна таблиця">
+      <graphic>
+         <ImageView fitHeight="15.0" fitWidth="15.0">
+            <Image url="@../images/table.png" />
+         </ImageView>
+      </graphic>
+   </JFXButton>
+   <JFXButton fx:id="btnOpen" alignment="TOP_LEFT" maxWidth="1.7976931348623157E308" onAction="#openMainWindow" text="Основне вікно">
+      <VBox.margin>
+         <Insets />
+      </VBox.margin>
+      <graphic>
+         <ImageView fitHeight="15.0" fitWidth="15.0">
+            <Image url="@../images/main-menu.png" />
+         </ImageView>
+      </graphic></JFXButton>
+   <JFXButton fx:id="btnSettings" alignment="TOP_LEFT" maxWidth="1.7976931348623157E308" onAction="#openSettingsWindow" text="Налаштування">
+      <VBox.margin>
+         <Insets />
+      </VBox.margin>
+      <graphic>
+         <ImageView fitHeight="15.0" fitWidth="15.0">
+            <Image url="@../images/tray settings.png" />
+         </ImageView>
+      </graphic></JFXButton>
+   <JFXButton fx:id="btnExit" alignment="TOP_LEFT" maxWidth="1.7976931348623157E308" onAction="#exit" text="Вийти" textAlignment="CENTER">
+      <VBox.margin>
+         <Insets />
+      </VBox.margin>
+      <graphic>
+         <ImageView fitHeight="15.0" fitWidth="15.0">
+            <Image url="@../images/sign-out.png" />
+         </ImageView>
+      </graphic></JFXButton>
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
+</VBox>

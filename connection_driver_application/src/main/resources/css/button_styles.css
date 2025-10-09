@@ -1,0 +1,82 @@
+.button {
+    -fx-button-type: FLAT;
+    -fx-raised: false;
+    -fx-cursor: hand;
+    -fx-font-family: "Open Sans Regular";
+    -fx-font-weight: bold;
+    -fx-graphic-text-gap: 2.0;
+    -fx-background-radius: 6;
+    -fx-border-radius: 6;
+}
+
+.button:hover {
+    -fx-button-type: RAISED;
+    -fx-raised: true;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.42), 15, 0.2, 0, 1);
+    -fx-scale-x: 1.02;
+    -fx-scale-y: 1.02;
+}
+
+.button:pressed {
+    -fx-button-type: FLAT;
+    -fx-raised: false;
+    -fx-cursor: hand;
+    -fx-scale-x: 0.95;
+    -fx-scale-y: 0.95;
+    -fx-translate-y: 1;
+    -fx-effect:
+            innershadow(gaussian, rgba(0, 0, 0, 0.6), 8, 0.4, 0, 1),
+            dropshadow(gaussian, rgba(0, 0, 0, 0.3), 3, 0.2, 0, 1);
+    -fx-background-color: derive(-fx-base, -10%);
+}
+
+
+
+
+.button-bold {
+    -fx-font-family: "Open Sans Regular";
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+}
+.no-padding-button {
+    -fx-padding: 0;
+}
+
+.transparent-button {
+    -fx-background-color: transparent;
+    -fx-color: transparent;
+    -mfx-ripple-animation-speed: 1;
+}
+.image-button {
+    -fx-font-family: "Open Sans Regular";
+
+    -fx-padding: 2;
+    /* Выравнивание контента */
+    -fx-alignment: center;
+    /* Показывать только графику (иконку), без текста */
+    -fx-content-display: graphic-only;
+    /* Расстояние между графикой и текстом (0 — отключаем отступ) */
+    -fx-graphic-text-gap: 0;
+    /* Отключаем мнемонику (ALT+буква не подчеркивает букву) */
+    -fx-mnemonic-parsing: false;
+    -fx-background-color: transparent;
+    -fx-color: transparent;
+}
+.image-button .mfx-ripple-generator
+{
+    -mfx-animation-speed: 0.4;
+    -mfx-ripple-radius: 25;
+    -mfx-animation-shadow: true;
+    -mfx-animate-shadow: true;
+    -mfx-ripple-animate-shadow: true;
+}
+.mfx-button .mfx-ripple-generator
+{
+    -mfx-animation-speed: 0.6;
+    -mfx-ripple-radius: 25;
+    -mfx-animation-shadow: true;
+    -mfx-animate-shadow: true;
+    -mfx-ripple-animate-shadow: true;
+}
+

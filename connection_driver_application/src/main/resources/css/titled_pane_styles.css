@@ -1,0 +1,82 @@
+.titled-pane-bold > .title {
+    -fx-font-family:"Open Sans Regular";
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+}
+
+.titled-pane-bold .text-field,
+.titled-pane-bold .combo-box,
+.titled-pane-bold .button {
+    -fx-font-family: "Open Sans Regular";
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+}
+
+.titled-pane.field-style {
+    -fx-background-color: -fx-field-background-color;
+    -fx-border-color: -fx-field-border-color;
+    -fx-border-width: 2px;
+    -fx-border-radius: 6px;
+    -fx-background-radius: 6px;
+    -fx-padding: 0;
+}
+
+.titled-pane.field-style > .title {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0; /* Скидаємо фонові відступи від теми за замовчуванням */
+    -fx-padding: 2 5 2 5; /* Невеликий, збалансований відступ для тексту заголовка */
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-alignment: center-left;
+    -fx-border-width: 0;
+    -fx-background-radius: 0;
+    -fx-min-height: 22;
+    -fx-pref-height: 22;
+}
+
+.titled-pane.field-style > .content {
+    -fx-background-color: transparent; /* Фон контенту також прозорий */
+    -fx-background-radius: 0 0 6px 6px;
+    -fx-border-radius: 0 0 6px 6px;
+    -fx-padding: 4; /* Встановлює невеликий відступ 5px з усіх боків */
+    -fx-border-width: 0;
+
+}
+
+/* Зменшуємо відступи між заголовком і контентом */
+.titled-pane.field-style > .title,
+.titled-pane.field-style > .content {
+    -fx-spacing: 5;
+}
+
+/* Ефект фокуса при hover */
+.titled-pane.field-style:hover {
+    -fx-effect: innershadow(gaussian, rgba(0, 0, 0, 0.2), 8, 0.3, 0, 0),
+    dropshadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0.0, 0, 2);
+}
+
+.titled-pane.field-style .focus-border {
+    -fx-stroke: -fx-primary-accent-color;
+    -fx-stroke-width: 2;
+    -fx-stroke-line-cap:      butt;
+    -fx-stroke-line-join:     round;
+    -fx-fill: transparent;
+
+}
+
+/* Прибираємо стрілочку розгортання */
+.titled-pane.field-style > .title > .arrow-button {
+    -fx-opacity: 0;
+    -fx-pref-width: 0;
+    -fx-pref-height: 0;
+    -fx-min-width: 0;
+    -fx-min-height: 0;
+    -fx-max-width: 0;
+    -fx-max-height: 0;
+}
+
+.titled-pane.field-style > .title > .arrow-button > .arrow {
+    -fx-opacity: 0;
+    -fx-shape: "";
+}
+

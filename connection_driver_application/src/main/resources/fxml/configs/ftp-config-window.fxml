@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<VBox xmlns="http://javafx.com/javafx/"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="ywh.fx_app.configs.FTPConfigWindowController"
+      spacing="10"
+      alignment="TOP_CENTER">
+
+    <TitledPane fx:id="ftpTitledPane"
+                styleClass="titled-pane-bold"
+                text="Налаштування FTP"
+                maxWidth="1.7976931348623157E308"
+                VBox.vgrow="ALWAYS"
+                collapsible="false"
+    >
+
+        <VBox spacing="5">
+            <MFXTextField fx:id="serverTF" floatingText="URL сервера" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+                <font>
+                    <Font size="14.0"/>
+                </font>
+            </MFXTextField>
+            <MFXTextField fx:id="userTf" floatingText="Логін" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+                <font>
+                    <Font size="14.0"/>
+                </font>
+            </MFXTextField>
+            <MFXPasswordField fx:id="passwordTF" floatingText="Пароль" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS" allowPaste="true" allowCopy="true">
+                <font>
+                    <Font size="14.0"/>
+                </font>
+            </MFXPasswordField>
+        </VBox>
+    </TitledPane>
+
+    <!-- Кнопки внизу справа -->
+    <HBox alignment="CENTER_RIGHT" spacing="10">
+        <padding>
+            <Insets top="10" right="10" bottom="10" left="10"/>
+        </padding>
+        <MFXButton fx:id="confirmBtn" buttonType="RAISED" graphicTextGap="2.0" onAction="#confirm"
+                   rippleAnimateShadow="true" text="Підтвердити">
+            <graphic>
+                <ImageView fitHeight="18.0" fitWidth="18.0">
+                    <Image url="@../../images/confirm.png"/>
+                </ImageView>
+            </graphic>
+        </MFXButton>
+        <MFXButton fx:id="cancelBtn" buttonType="RAISED" graphicTextGap="2.0" onAction="#cancel"
+                   rippleAnimateShadow="true" text="Скасувати">
+            <graphic>
+                <ImageView fitHeight="18.0" fitWidth="18.0">
+                    <Image url="@../../images/cancel.png"/>
+                </ImageView>
+            </graphic>
+        </MFXButton>
+    </HBox>
+</VBox>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import io.github.palexdev.materialfx.controls.*?>
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<fx:root animated="false"
+         collapsible="false"
+         contentDisplay="BOTTOM"
+         maxWidth="1.7976931348623157E308"
+         styleClass="field-style"
+         text="title"
+         type="javafx.scene.control.TitledPane"
+         minHeight="60.0"
+         VBox.vgrow="ALWAYS"
+         xmlns="http://javafx.com/javafx/"
+         xmlns:fx="http://javafx.com/fxml/1">
+    <AnchorPane styleClass="no-padding-box">
+        <HBox fx:id="hBox" spacing="5.0"
+              AnchorPane.bottomAnchor="0.0"
+              AnchorPane.leftAnchor="0.0"
+              AnchorPane.rightAnchor="0.0"
+              AnchorPane.topAnchor="0.0"
+              alignment="CENTER_LEFT"
+        >
+            <MFXButton fx:id="button"
+                       styleClass="image-button">
+                <tooltip>
+                    <Tooltip text="Обрати шлях" />
+                </tooltip>
+                <graphic>
+                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                        <Image url="@../../images/folder.png" />
+                    </ImageView>
+                </graphic>
+            </MFXButton>
+
+            <MFXButton fx:id="ftpButton"
+                       styleClass="image-button">
+                <tooltip>
+                    <Tooltip text="Налаштування експорту на ftp" />
+                </tooltip>
+                <graphic>
+                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                        <Image url="@../../images/ftp.png" />
+                    </ImageView>
+                </graphic>
+            </MFXButton>
+            <JFXTextField fx:id="textField"
+                          editable="false"
+                          focusTraversable="false"
+                          styleClass="transparent-text"
+                          unFocusColor="#8f8f8f00"
+                          HBox.hgrow="ALWAYS" />
+        </HBox>
+    </AnchorPane>
+
+</fx:root>

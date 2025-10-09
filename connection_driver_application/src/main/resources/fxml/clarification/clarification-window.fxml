@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<TitledPane fx:id="mainTitledPane"
+            styleClass="titled-pane-bold"
+
+            prefWidth="300.0"
+            text="Завантаження..."
+            xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="ywh.fx_app.clarification.ClarificationWindowController">
+
+    <VBox fx:id="mainVbox" spacing="5.0">
+        <MFXTextField fx:id="ownerTF" floatingText="Власник" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </MFXTextField>
+        <MFXTextField fx:id="animalNameTF" floatingText="Кличка" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </MFXTextField>
+        <MFXTextField fx:id="animalAgeTF" floatingText="Вік тварини" maxWidth="1.7976931348623157E308"
+                      VBox.vgrow="ALWAYS">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </MFXTextField>
+        <MFXComboBox fx:id="animalCB" floatMode="INLINE" floatingText="Тип тварини" graphicTextGap="100"
+                     maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </MFXComboBox>
+        <HBox alignment="BASELINE_RIGHT" spacing="10.0" VBox.vgrow="ALWAYS">
+            <padding>
+                <Insets right="5.0"/>
+            </padding>
+            <VBox.margin>
+                <Insets/>
+            </VBox.margin>
+            <MFXButton fx:id="confirmBtn" buttonType="RAISED" graphicTextGap="2.0" onAction="#confirm"
+                       rippleAnimateShadow="true" text="Підтвердити">
+                <graphic>
+                    <ImageView fitHeight="18.0" fitWidth="18.0">
+                        <Image url="@../../images/confirm.png"/>
+                    </ImageView>
+                </graphic>
+            </MFXButton>
+            <MFXButton fx:id="cancelBtn" buttonType="RAISED" graphicTextGap="2.0" onAction="#cancel"
+                       rippleAnimateShadow="true" text="Скасувати">
+                <graphic>
+                    <ImageView fitHeight="18.0" fitWidth="18.0">
+                        <Image url="@../../images/cancel.png"/>
+                    </ImageView>
+                </graphic>
+            </MFXButton>
+        </HBox>
+    </VBox>
+
+</TitledPane>

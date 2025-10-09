@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox prefHeight="600.0" prefWidth="400.0" spacing="10.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ywh.fx_app.clarification.ClarificationContainerController">
+
+    <padding>
+        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+    </padding>
+
+    <!-- Заголовок -->
+    <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Уточнення даних" />
+
+    <!-- Скрол з елементами -->
+    <MFXScrollPane fx:id="scrollPane" fitToWidth="true" VBox.vgrow="ALWAYS">
+        <VBox fx:id="itemsContainer" spacing="10.0">
+            <padding>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            </padding>
+        </VBox>
+    </MFXScrollPane>
+
+    <!-- Кнопки внизу -->
+    <HBox alignment="CENTER_RIGHT" spacing="10.0">
+        <MFXButton fx:id="confirmAllBtn" alignment="BASELINE_CENTER" onAction="#confirmAll" styleClass="button-bold" text="Підтвердити все">
+            <graphic>
+                <ImageView fitHeight="18.0" fitWidth="18.0">
+                    <Image url="@../../images/confirm.png" />
+                </ImageView>
+            </graphic>
+        </MFXButton>
+
+        <MFXButton fx:id="cancelAllBtn" alignment="BASELINE_CENTER" onAction="#cancelAll" styleClass="button-bold" text="Скасувати все">
+        <graphic>
+            <ImageView fitHeight="18.0" fitWidth="18.0">
+                <Image url="@../../images/cancel.png" />
+            </ImageView>
+        </graphic>
+    </MFXButton>
+    </HBox>
+
+</VBox>

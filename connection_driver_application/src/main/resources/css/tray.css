@@ -1,0 +1,93 @@
+
+* {
+    /* Повертаємо ваш оригінальний колір тексту + трохи яскравіше */
+    -fx-text-hover: #2b2b28;
+    -fx-text: rgba(220, 220, 213, 0.85); /* Між вашим оригіналом і моїм білим */
+    -fx-text-secondary: rgba(214, 214, 181, 0.77); /* Ваш оригінальний */
+    -fx-accent: #0078d4;
+    -fx-accent-hover: #106ebe;
+    -fx-success: #107c10;
+    -fx-success-hover: #0e6e0e;
+    -fx-danger: #d13438;
+    -fx-danger-hover: #a4262c;
+    -fx-shaodw: #3e3e29; /* Ваша оригінальна змінна */
+
+    /* Модерний градієнт - світліше */
+    -fx-glass-gradient: linear-gradient(to bottom,
+    rgba(60, 60, 60, 0.9),
+    rgba(50, 50, 50, 0.9),
+    rgba(45, 45, 45, 0.9)
+    );
+}
+
+#trayVBox {
+    -fx-background-color: -fx-glass-gradient;
+    -fx-background-radius: 12;
+    -fx-border-color: rgba(255, 255, 255, 0.15);
+    -fx-border-width: 1;
+    -fx-border-radius: 12;
+    -fx-border-insets: 0;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 15, 0.0, 0, 4);
+    -fx-background-insets: 1;
+}
+.label{
+    -fx-background-radius: 8;
+    -fx-font-weight: bold;
+    -fx-font-size: 13;
+    -fx-font-family: "Segoe UI", "San Francisco", Corbel;
+    -fx-text-fill: -fx-text;
+    -fx-background-color: transparent;
+    -fx-padding: 7 4 7 4;
+}
+
+
+
+.jfx-button {
+    -fx-background-radius: 8;
+    -fx-font-weight: bold;
+    -fx-font-size: 13;
+    -fx-font-family: "Segoe UI", "San Francisco", Corbel;
+    -fx-text-fill: -fx-text;
+    -fx-background-color: transparent;
+    -fx-padding: 7 4 7 4;
+
+    /* Subtle effect як у вас */
+    -fx-effect: innershadow(gaussian, -fx-text, 12, 0.8, 0, 0);
+}
+.label:hover{
+    -fx-background-color: -fx-accent-hover;
+    -fx-text-fill: -fx-text-hover; /* Ваш оригінальний hover текст */
+    -fx-effect: innershadow(gaussian, -fx-shaodw, 7, 0.5, 0, 0); /* Ваш оригінальний ефект */
+}
+.jfx-button:hover {
+    -fx-background-color: rgba(56, 128, 56, 0.95); /* Ваш оригінальний зелений */
+    -fx-text-fill: -fx-text-hover; /* Ваш оригінальний hover текст */
+    -fx-effect: innershadow(gaussian, -fx-shaodw, 7, 0.5, 0, 0); /* Ваш оригінальний ефект */
+}
+
+#btnExit:hover {
+    -fx-text-fill: -fx-text-hover; /* Ваш оригінальний */
+    -fx-background-color: rgba(178, 48, 39, 0.95); /* Ваш оригінальний червоний */
+    -fx-effect: innershadow(gaussian, -fx-shaodw, 7, 0.5, 0, 0); /* Ваш оригінальний ефект */
+}
+
+/* Спеціально для іконок ImageView */
+.jfx-button .image-view{
+    -fx-opacity: 0.8; /* Трохи прозорі в нормальному стані */
+}
+.label:hover .image-view,
+.jfx-button:hover .image-view{
+    -fx-opacity: 1.0; /* Повна непрозорість при hover */
+}
+
+/* Якщо іконки це Label з гліфами */
+.label,
+.jfx-button .glyph-icon,
+.jfx-button Label {
+    -fx-text-fill: -fx-text;
+}
+
+.jfx-button:hover .glyph-icon,
+.jfx-button:hover Label {
+    -fx-text-fill: -fx-text-hover;
+}

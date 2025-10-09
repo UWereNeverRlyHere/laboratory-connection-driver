@@ -1,0 +1,623 @@
+[
+  {
+    "name": "Еозинофіли (абс.)",
+    "code": "Eos#",
+    "printName": "Eos#",
+    "analyzerCodes": [],
+    "orderCodes": [],
+    "referenceRanges": {
+      "DOG": {
+        "min": 0.0,
+        "max": 1.5,
+        "mean": 0.75,
+        "text": "0.0 - 1.5",
+        "animalType": "DOG",
+        "isNonNumeric": false,
+        "unit": "CELLS_10_9_PER_L"
+      },
+      "CAT": {
+        "min": 0.0,
+        "max": 1.9,
+        "mean": 0.95,
+        "text": "0.0 - 1.9",
+        "animalType": "CAT",
+        "isNonNumeric": false,
+        "unit": "CELLS_10_9_PER_L"
+      }
+    }
+  },
+  {
+    "name": "Еозинофіли (%)",
+    "code": "Eos%",
+    "printName": "Eos%",
+    "analyzerCodes": [],
+    "orderCodes": [],
+    "referenceRanges": {
+      "DOG": {
+        "min": 0.0,
+        "max": 10.0,
+        "mean": 5.0,
+        "text": "0.0 - 10.0",
+        "animalType": "DOG",
+        "isNonNumeric": false,
+        "unit": "PERCENT"
+      },
+      "CAT": {
+        "min": 0.0,
+        "max": 11.0,
+        "mean": 5.5,
+        "text": "0.0 - 11.0",
+        "animalType": "CAT",
+        "isNonNumeric": false,
+        "unit": "PERCENT"
+      }
+    }
+  },
+  {
+    "name": "Гемоглобін",
+    "code": "HGB",
+    "printName": "HGB",
+    "analyzerCodes": [],
+    "orderCodes": [],
+    "referenceRanges": {
+      "DOG": {
+        "min": 110.0,
+        "max": 195.0,
+        "mean": 152.5,
+        "text": "110.0 - 195.0",
+        "animalType": "DOG",
+        "isNonNumeric": false,
+        "unit": "GRAM_PER_LITER"
+      },
+      "CAT": {
+        "min": 85.0,
+        "max": 162.0,
+        "mean": 123.5,
+        "text": "85.0 - 162.0",
+        "animalType": "CAT",
+        "isNonNumeric": false,
+        "unit": "GRAM_PER_LITER"
+      }
+    }
+  },
+  {
+    "name": "Гематокрит",
+    "code": "HTC",
+    "printName": "HTC",
+    "analyzerCodes": [],
+    "orderCodes": [],
+    "referenceRanges": {
+      "DOG": {
+        "min": 32.5,
+        "max": 58.0,
+        "mean": 45.25,
+        "text": "32.5 - 58.0",
+        "animalType": "DOG",
+        "isNonNumeric": false,
+        "unit": "PERCENT"
+      },
+      "CAT": {
+        "min": 26.0,
+        "max": 51.0,
+        "mean": 38.5,
+        "text": "26.0 - 51.0",
+        "animalType": "CAT",
+        "isNonNumeric": false,
+        "unit": "PERCENT"
+      }
+    }
+  },
+  {
+    "name": "Лімфоцити (абс.)",
+    "code": "Lym#",
+    "printName": "Lym#",
+    "analyzerCodes": [],
+    "orderCodes": [],
+    "referenceRanges": {
+      "DOG": {
+        "min": 0.8,
+        "max": 5.3,
+        "mean": 3.05,
+        "text": "0.8 - 5.3",
+        "animalType": "DOG",
+        "isNonNumeric": false,
+        "unit": "CELLS_10_9_PER_L"
+      },
+      "CAT": {
+        "min": 0.8,
+        "max": 7.9,
+        "mean": 4.35,
+        "text": "0.8 - 7.9",
+        "animalType": "CAT",
+        "isNonNumeric": false,
+        "unit": "CELLS_10_9_PER_L"
+      }
+    }
+  },
+  {
+    "name": "Лімфоцити (%)",
+    "code": "Lym%",
+    "printName": "Lym%",
+    "analyzerCodes": [],
+    "orderCodes": [],
+    "referenceRanges": {
+      "DOG": {
+        "min": 9.0,
+        "max": 40.0,
+        "mean": 24.5,
+        "text": "9.0 - 40.0",
+        "animalType": "DOG",
+        "isNonNumeric": false,
+        "unit": "PERCENT"
+      },
+      "CAT": {
+        "min": 10.0,
+        "max": 53.0,
+        "mean": 31.5,
+        "text": "10.0 - 53.0",
+        "animalType": "CAT",
+        "isNonNumeric": false,
+        "unit": "PERCENT"
+      }
+    }
+  },
+  {
+    "name": "Середній вміст гемоглобіну",
+    "code": "MCH",
+    "printName": "MCH",
+    "analyzerCodes": [],
+    "orderCodes": [],
+    "referenceRanges": {
+      "DOG": {
+        "min": 20.0,
+        "max": 27.0,
+        "mean": 23.5,
+        "text": "20.0 - 27.0",
+        "animalType": "DOG",
+        "isNonNumeric": false,
+        "unit": "PICOGRAM"
+      },
+      "CAT": {
+        "min": 11.8,
+        "max": 18.0,
+        "mean": 14.9,
+        "text": "11.8 - 18.0",
+        "animalType": "CAT",
+        "isNonNumeric": false,
+        "unit": "PICOGRAM"
+      }
+    }
+  },
+  {
+    "name": "Середня концентрація гемоглобіну",
+    "code": "MCHC",
+    "printName": "MCHC",
+    "analyzerCodes": [],
+    "orderCodes": [],
+    "referenceRanges": {
+      "DOG": {
+        "min": 300.0,
+        "max": 380.0,
+        "mean": 340.0,
+        "text": "300.0 - 380.0",
+        "animalType": "DOG",
+        "isNonNumeric": false,
+        "unit": "GRAM_PER_LITER"
+      },
+      "CAT": {
+        "min": 300.0,
+        "max": 380.0,
+        "mean": 340.0,
+        "text": "300.0 - 380.0",
+        "animalType": "CAT",
+        "isNonNumeric": false,
+        "unit": "GRAM_PER_LITER"
+      }
+    }
+  },
+  {
+    "name": "Середній об’єм еритроцита",
+    "code": "MCV",
+    "printName": "MCV",
+    "analyzerCodes": [],
+    "orderCodes": [],
+    "referenceRanges": {
+      "DOG": {
+        "min": 60.0,
+        "max": 76.0,
+        "mean": 68.0,
+        "text": "60.0 - 76.0",
+        "animalType": "DOG",
+        "isNonNumeric": false,
+        "unit": "FEMTOLITER"
+      },
+      "CAT": {
+        "min": 35.0,
+        "max": 54.0,
+        "mean": 44.5,
+        "text": "35.0 - 54.0",
+        "animalType": "CAT",
+        "isNonNumeric": false,
+        "unit": "FEMTOLITER"
+      }
+    }
+  },
+  {
+    "name": "Середній об’єм тромбоцитів",
+    "code": "MPV",
+    "printName": "MPV",
+    "analyzerCodes": [],
+    "orderCodes": [],
+    "referenceRanges": {
+      "DOG": {
+        "min": 7.6,
+        "max": 14.1,
+        "mean": 10.85,
+        "text": "7.6 - 14.1",
+        "animalType": "DOG",
+        "isNonNumeric": false,
+        "unit": "FEMTOLITER"
+      },
+      "CAT": {
+        "min": 8.2,
+        "max": 16.3,
+        "mean": 12.25,
+        "text": "8.2 - 16.3",
+        "animalType": "CAT",
+        "isNonNumeric": false,
+        "unit": "FEMTOLITER"
+      }
+    }
+  },
+  {
+    "name": "Моноцити (абс.)",
+    "code": "Mon#",
+    "printName": "Mon#",
+    "analyzerCodes": [],
+    "orderCodes": [],
+    "referenceRanges": {
+      "DOG": {
+        "min": 0.0,
+        "max": 1.5,
+        "mean": 0.75,
+        "text": "0.0 - 1.5",
+        "animalType": "DOG",
+        "isNonNumeric": false,
+        "unit": "CELLS_10_9_PER_L"
+      },
+      "CAT": {
+        "min": 0.0,
+        "max": 1.8,
+        "mean": 0.9,
+        "text": "0.0 - 1.8",
+        "animalType": "CAT",
+        "isNonNumeric": false,
+        "unit": "CELLS_10_9_PER_L"
+      }
+    }
+  },
+  {
+    "name": "Моноцити (%)",
+    "code": "Mon%",
+    "printName": "Mon%",
+    "analyzerCodes": [],
+    "orderCodes": [],
+    "referenceRanges": {
+      "DOG": {
+        "min": 0.0,
+        "max": 10.0,
+        "mean": 5.0,
+        "text": "0.0 - 10.0",
+        "animalType": "DOG",
+        "isNonNumeric": false,
+        "unit": "PERCENT"
+      },
+      "CAT": {
+        "min": 0.0,
+        "max": 10.0,
+        "mean": 5.0,
+        "text": "0.0 - 10.0",
+        "animalType": "CAT",
+        "isNonNumeric": false,
+        "unit": "PERCENT"
+      }
+    }
+  },
+  {
+    "name": "Нейтрофіли (абс.)",
+    "code": "Neu#",
+    "printName": "Neu#",
+    "analyzerCodes": [],
+    "orderCodes": [],
+    "referenceRanges": {
+      "DOG": {
+        "min": 3.2,
+        "max": 12.3,
+        "mean": 7.75,
+        "text": "3.2 - 12.3",
+        "animalType": "DOG",
+        "isNonNumeric": false,
+        "unit": "CELLS_10_9_PER_L"
+      },
+      "CAT": {
+        "min": 1.8,
+        "max": 12.6,
+        "mean": 7.2,
+        "text": "1.8 - 12.6",
+        "animalType": "CAT",
+        "isNonNumeric": false,
+        "unit": "CELLS_10_9_PER_L"
+      }
+    }
+  },
+  {
+    "name": "Нейтрофіли (%)",
+    "code": "Neu%",
+    "printName": "Neu%",
+    "analyzerCodes": [],
+    "orderCodes": [],
+    "referenceRanges": {
+      "DOG": {
+        "min": 43.0,
+        "max": 85.0,
+        "mean": 64.0,
+        "text": "43.0 - 85.0",
+        "animalType": "DOG",
+        "isNonNumeric": false,
+        "unit": "PERCENT"
+      },
+      "CAT": {
+        "min": 30.0,
+        "max": 85.0,
+        "mean": 57.5,
+        "text": "30.0 - 85.0",
+        "animalType": "CAT",
+        "isNonNumeric": false,
+        "unit": "PERCENT"
+      }
+    }
+  },
+  {
+    "name": "Кількість великих тромбоцитів",
+    "code": "P-LCC",
+    "printName": "P-LCC",
+    "analyzerCodes": [],
+    "orderCodes": [],
+    "referenceRanges": {
+      "DOG": {
+        "min": 25.0,
+        "max": 148.0,
+        "mean": 86.5,
+        "text": "25.0 - 148.0",
+        "animalType": "DOG",
+        "isNonNumeric": false,
+        "unit": "CELLS_10_9_PER_L"
+      },
+      "CAT": {
+        "min": 0.0,
+        "max": 0.0,
+        "mean": 0.0,
+        "text": "Норма не визначена",
+        "animalType": "CAT",
+        "isNonNumeric": true,
+        "unit": "CELLS_10_9_PER_L"
+      }
+    }
+  },
+  {
+    "name": "Відсоток великих тромбоцитів",
+    "code": "P-LCR",
+    "printName": "P-LCR",
+    "analyzerCodes": [],
+    "orderCodes": [],
+    "referenceRanges": {
+      "DOG": {
+        "min": 11.5,
+        "max": 55.0,
+        "mean": 33.25,
+        "text": "11.5 - 55.0",
+        "animalType": "DOG",
+        "isNonNumeric": false,
+        "unit": "PERCENT"
+      },
+      "CAT": {
+        "min": 0.0,
+        "max": 0.0,
+        "mean": 0.0,
+        "text": "Норма не визначена",
+        "animalType": "CAT",
+        "isNonNumeric": true,
+        "unit": "PERCENT"
+      }
+    }
+  },
+  {
+    "name": "Тромбокрит",
+    "code": "PCT",
+    "printName": "PCT",
+    "analyzerCodes": [],
+    "orderCodes": [],
+    "referenceRanges": {
+      "DOG": {
+        "min": 0.9,
+        "max": 5.2,
+        "mean": 3.05,
+        "text": "0.9 - 5.2",
+        "animalType": "DOG",
+        "isNonNumeric": false,
+        "unit": "MILLILITER_PER_LITER"
+      },
+      "CAT": {
+        "min": 0.9,
+        "max": 7.0,
+        "mean": 3.95,
+        "text": "0.9 - 7.0",
+        "animalType": "CAT",
+        "isNonNumeric": false,
+        "unit": "MILLILITER_PER_LITER"
+      }
+    }
+  },
+  {
+    "name": "Ширина розподілу тромбоцитів",
+    "code": "PDW",
+    "printName": "PDW",
+    "analyzerCodes": [],
+    "orderCodes": [],
+    "referenceRanges": {
+      "DOG": {
+        "min": 12.0,
+        "max": 17.5,
+        "mean": 14.75,
+        "text": "12.0 - 17.5",
+        "animalType": "DOG",
+        "isNonNumeric": false,
+        "unit": "DIMENSIONLESS"
+      },
+      "CAT": {
+        "min": 12.0,
+        "max": 17.5,
+        "mean": 14.75,
+        "text": "12.0 - 17.5",
+        "animalType": "CAT",
+        "isNonNumeric": false,
+        "unit": "DIMENSIONLESS"
+      }
+    }
+  },
+  {
+    "name": "Тромбоцити",
+    "code": "PLT",
+    "printName": "PLT",
+    "analyzerCodes": [],
+    "orderCodes": [],
+    "referenceRanges": {
+      "DOG": {
+        "min": 117.0,
+        "max": 490.0,
+        "mean": 303.5,
+        "text": "117.0 - 490.0",
+        "animalType": "DOG",
+        "isNonNumeric": false,
+        "unit": "CELLS_10_9_PER_L"
+      },
+      "CAT": {
+        "min": 100.0,
+        "max": 518.0,
+        "mean": 309.0,
+        "text": "100.0 - 518.0",
+        "animalType": "CAT",
+        "isNonNumeric": false,
+        "unit": "CELLS_10_9_PER_L"
+      }
+    }
+  },
+  {
+    "name": "Еритроцити",
+    "code": "RBC",
+    "printName": "RBC",
+    "analyzerCodes": [],
+    "orderCodes": [],
+    "referenceRanges": {
+      "DOG": {
+        "min": 5.1,
+        "max": 8.5,
+        "mean": 6.8,
+        "text": "5.1 - 8.5",
+        "animalType": "DOG",
+        "isNonNumeric": false,
+        "unit": "CELLS_10_12_PER_L"
+      },
+      "CAT": {
+        "min": 5.1,
+        "max": 11.2,
+        "mean": 8.15,
+        "text": "5.1 - 11.2",
+        "animalType": "CAT",
+        "isNonNumeric": false,
+        "unit": "CELLS_10_12_PER_L"
+      }
+    }
+  },
+  {
+    "name": "Стандартне відхилення ширини розподілу еритроцитів",
+    "code": "RDW-SD",
+    "printName": "RDW-SD",
+    "analyzerCodes": [],
+    "orderCodes": [],
+    "referenceRanges": {
+      "DOG": {
+        "min": 29.1,
+        "max": 46.3,
+        "mean": 37.7,
+        "text": "29.1 - 46.3",
+        "animalType": "DOG",
+        "isNonNumeric": false,
+        "unit": "FEMTOLITER"
+      },
+      "CAT": {
+        "min": 23.7,
+        "max": 45.6,
+        "mean": 34.65,
+        "text": "23.7 - 45.6",
+        "animalType": "CAT",
+        "isNonNumeric": false,
+        "unit": "FEMTOLITER"
+      }
+    }
+  },
+  {
+    "name": "Варіація розмірів еритроцитів",
+    "code": "RDW-SV",
+    "printName": "RDW-SV",
+    "analyzerCodes": [],
+    "orderCodes": [],
+    "referenceRanges": {
+      "DOG": {
+        "min": 10.8,
+        "max": 17.2,
+        "mean": 14.0,
+        "text": "10.8 - 17.2",
+        "animalType": "DOG",
+        "isNonNumeric": false,
+        "unit": "PERCENT"
+      },
+      "CAT": {
+        "min": 13.2,
+        "max": 25.6,
+        "mean": 19.4,
+        "text": "13.2 - 25.6",
+        "animalType": "CAT",
+        "isNonNumeric": false,
+        "unit": "PERCENT"
+      }
+    }
+  },
+  {
+    "name": "Лейкоцити",
+    "code": "WBC",
+    "printName": "WBC",
+    "analyzerCodes": [],
+    "orderCodes": [],
+    "referenceRanges": {
+      "DOG": {
+        "min": 6.0,
+        "max": 17.0,
+        "mean": 11.5,
+        "text": "6.0 - 17.0",
+        "animalType": "DOG",
+        "isNonNumeric": false,
+        "unit": "CELLS_10_9_PER_L"
+      },
+      "CAT": {
+        "min": 5.5,
+        "max": 19.5,
+        "mean": 12.5,
+        "text": "5.5 - 19.5",
+        "animalType": "CAT",
+        "isNonNumeric": false,
+        "unit": "CELLS_10_9_PER_L"
+      }
+    }
+  }
+]

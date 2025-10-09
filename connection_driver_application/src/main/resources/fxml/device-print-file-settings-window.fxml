@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<?import ywh.fx_app.app_custom_nodes.PathChoiceField?>
+<?import ywh.fx_app.app_custom_nodes.FocusableTitledPane?>
+<?import ywh.fx_app.app_custom_nodes.ChangeableButton?>
+<TitledPane fx:id="root" contentDisplay="BOTTOM" maxWidth="Infinity" styleClass="titled-pane-bold"
+            text="Друк та файли" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="ywh.fx_app.device.DevicePrintAndFilesController">
+
+    <VBox fx:id="rootVbox" maxWidth="1.7976931348623157E308" spacing="5.0">
+
+        <FocusableTitledPane  text="Режим друку" fx:id="printingMethodComboBoxTitledPane">
+                <HBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                      AnchorPane.topAnchor="0.0"
+                      alignment="CENTER_LEFT"
+                >
+                    <ChangeableButton
+                            fx:id="printFromFileButton"
+                            firstImageUrl="/images/print_from_docx.png"
+                            secondImageUrl="/images/print_from_pdf.png"
+                            firstText="Друк з .docx шаблону"
+                            secondText="Друк з .pdf шаблону"
+                            preserveRatio="false"
+                            fitWidth="19"
+
+
+                    />
+                    <ChangeableButton fx:id="silentPrintButton"
+                                      firstImageUrl="/images/silent_print_on.png"
+                                      secondImageUrl="/images/silent_print_off.png"
+                                      firstText="Одразу відправляти на друк"
+                                      secondText="Відкривати діалогове вікно для друку"
+                                      preserveRatio="false"
+                    />
+                    <ComboBox fx:id="printingMethodComboBox" maxWidth="Infinity" HBox.hgrow="ALWAYS"  />
+                </HBox>
+        </FocusableTitledPane>
+
+        <FocusableTitledPane text="Принтер" fx:id="printerTitledPane">
+                <HBox spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                      AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <MFXButton fx:id="refreshPrintersButton"
+                               onAction="#refreshPrinters"
+                               styleClass="image-button">
+                        <tooltip>
+                            <Tooltip text="Оновити список принтерів"/>
+                        </tooltip>
+                        <graphic>
+                            <ImageView fitHeight="18.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                <Image url="@../images/refresh.png"/>
+                            </ImageView>
+                        </graphic>
+                    </MFXButton>
+                    <ComboBox fx:id="printerComboBox" maxWidth="Infinity" HBox.hgrow="ALWAYS"/>
+                </HBox>
+        </FocusableTitledPane>
+
+        <PathChoiceField
+                fx:id="templateFileField"
+                title="Шлях до шаблону"
+                editable="false"
+                promptText=""
+                chooserType="FILE"/>
+        <PathChoiceField
+                fx:id="outputPathField"
+                title="Шлях до результатів"
+                editable="false"
+                addFtpButton="true"
+                promptText=""
+                chooserType="DIRECTORY"
+        >
+
+
+        </PathChoiceField>
+    </VBox>
+
+</TitledPane>

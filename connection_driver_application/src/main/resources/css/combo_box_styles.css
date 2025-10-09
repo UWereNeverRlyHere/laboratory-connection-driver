@@ -1,0 +1,11 @@
+.mfx-combo-box {
+    -fx-cursor: hand;
+    -fx-spacing: 10;
+
+}
+
+.mfx-combo-box .text-field {
+    -fx-padding: 8 0 0 0; /* top right bottom left */
+    -fx-cursor: hand;
+    -fx-font-family: "Open Sans Regular";
+}

@@ -1,0 +1,27 @@
+{
+  "animalType": "RABBIT",
+  "displayName": "Кролик",
+  "indicators": [
+    { "code": "WBC",    "name": "Лейкоцити",                "printName": "WBC",    "referenceRange": { "min": 2.00, "max": 13.50, "mean": 7.75,  "unit": "10⁹/L", "text": "", "isNonNumeric": false } },
+    { "code": "Gran#",  "name": "Гранулоцити (абс.)",       "printName": "Gran#",  "referenceRange": { "min": 0.61, "max": 9.90,  "mean": 5.255, "unit": "10⁹/L", "text": "", "isNonNumeric": false } },
+    { "code": "Lym#",   "name": "Лімфоцити (абс.)",         "printName": "Lym#",   "referenceRange": { "min": 0.60, "max": 5.20,  "mean": 2.90,  "unit": "10⁹/L", "text": "", "isNonNumeric": false } },
+    { "code": "Mon#",   "name": "Моноцити (абс.)",          "printName": "Mon#",   "referenceRange": { "min": 0.00, "max": 1.13,  "mean": 0.565, "unit": "10⁹/L", "text": "", "isNonNumeric": false } },
+    { "code": "Gran%",  "name": "Гранулоцити (%)",          "printName": "Gran%",  "referenceRange": { "min": 25.0, "max": 84.0,  "mean": 54.5,  "unit": "%",     "text": "", "isNonNumeric": false } },
+    { "code": "Lym%",   "name": "Лімфоцити (%)",            "printName": "Lym%",   "referenceRange": { "min": 12.0, "max": 75.0,  "mean": 43.5,  "unit": "%",     "text": "", "isNonNumeric": false } },
+    { "code": "Mon%",   "name": "Моноцити (%)",             "printName": "Mon%",   "referenceRange": { "min": 0.0,  "max": 10.5,  "mean": 5.25,  "unit": "%",     "text": "", "isNonNumeric": false } },
+    { "code": "RBC",    "name": "Еритроцити",               "printName": "RBC",    "referenceRange": { "min": 3.40, "max": 6.50,  "mean": 4.95,  "unit": "10¹²/L","text": "", "isNonNumeric": false } },
+    { "code": "HGB",    "name": "Гемоглобін",               "printName": "HGB",    "referenceRange": { "min": 80.0, "max": 140.0, "mean": 110.0, "unit": "g/L",   "text": "", "isNonNumeric": false } },
+    { "code": "HCT",    "name": "Гематокрит",               "printName": "HCT",    "referenceRange": { "min": 25.0, "max": 45.0,  "mean": 35.0,  "unit": "%",     "text": "", "isNonNumeric": false } },
+    { "code": "MCV",    "name": "Середній об’єм еритроцита","printName": "MCV",    "referenceRange": { "min": 60.0, "max": 83.0,  "mean": 71.5,  "unit": "fL",    "text": "", "isNonNumeric": false } },
+    { "code": "MCH",    "name": "Середній вміст гемоглобіну","printName": "MCH",    "referenceRange": { "min": 18.0, "max": 26.0,  "mean": 22.0,  "unit": "pg",    "text": "", "isNonNumeric": false } },
+    { "code": "MCHC",   "name": "Середня концентрація гемоглобіну","printName": "MCHC", "referenceRange": { "min": 275.0, "max": 360.0, "mean": 317.5, "unit": "g/L", "text": "", "isNonNumeric": false } },
+    { "code": "RDW-CV", "name": "Варіація розмірів еритроцитів",  "printName": "RDW-CV", "referenceRange": { "min": 12.5, "max": 24.6, "mean": 18.55, "unit": "%",    "text": "", "isNonNumeric": false } },
+    { "code": "RDW-SD", "name": "Стандартне відхилення ширини розподілу еритроцитів", "printName": "RDW-SD", "referenceRange": { "min": 33.5, "max": 78.0, "mean": 55.75, "unit": "fL", "text": "", "isNonNumeric": false } },
+    { "code": "PLT",    "name": "Тромбоцити",               "printName": "PLT",    "referenceRange": { "min": 80.0, "max": 1250.0,"mean": 665.0, "unit": "10⁹/L", "text": "", "isNonNumeric": false } },
+    { "code": "MPV",    "name": "Середній об’єм тромбоцитів", "printName": "MPV",    "referenceRange": { "min": 4.0,  "max": 7.8,  "mean": 5.9,  "unit": "fL",    "text": "", "isNonNumeric": false } },
+    { "code": "PDW",    "name": "Ширина розподілу тромбоцитів", "printName": "PDW",   "referenceRange": { "min": 12.0, "max": 17.5, "mean": 14.75,  "unit": "",     "text": "", "isNonNumeric": false } },
+    { "code": "PCT",    "name": "Тромбокрит",               "printName": "PCT",    "referenceRange": { "min": 0.30, "max": 7.90, "mean": 4.10,  "unit": "mL/L",  "text": "", "isNonNumeric": false } },
+    { "code": "P-LCC",  "name": "Кількість великих тромбоцитів", "printName": "P-LCC", "referenceRange": { "min": 22.0, "max": 330.0, "mean": 176.0, "unit": "10⁹/L", "text": "", "isNonNumeric": false } },
+    { "code": "P-LCR",  "name": "Відсоток великих тромбоцитів", "printName": "P-LCR", "referenceRange": { "min": 18.0, "max": 53.0, "mean": 35.5, "unit": "%", "text": "", "isNonNumeric": false } }
+  ]
+}

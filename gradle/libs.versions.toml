@@ -1,0 +1,68 @@
+
+[versions]
+javaVersion = "21"
+javafx = "21.0.8"
+lombok = "1.18.38"
+gson = "2.13.1"
+slf4j = "2.0.17"
+logback = "1.5.18"
+junit = "5.10.2"
+jetbrainsAnnotations = "24.1.0"
+apachePoi = "5.4.1"
+javadbf = "1.14.1"
+jssc = "2.10.0"
+pdfbox = "3.0.5"
+jna = "5.17.0"
+jfoenix = "9.0.10"
+controlsfx = "11.2.1"
+formsfx = "11.6.0"
+validatorfx = "0.5.0"
+ikonli = "12.3.1"
+bootstrapfx = "0.4.0"
+atlantafx = "2.0.1"
+materialfx = "11.17.0"
+mapstruct = "1.6.3"
+log4j = "2.24.3"
+apacheCommonsNet = "3.12.0"
+
+modulePlugin = "1.8.15"
+jlinkPlugin = "3.1.3"
+javafxPlugin = "0.1.0"
+
+[libraries]
+lombok = { module = "org.projectlombok:lombok", version.ref = "lombok" }
+gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
+slf4jApi = { module = "org.slf4j:slf4j-api", version.ref = "slf4j" }
+logbackClassic = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
+logbackCore = { module = "ch.qos.logback:logback-core", version.ref = "logback" }
+junitJupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit" }
+junit-bom = { module = "org.junit:junit-bom", version.ref = "junit" }
+jetbrainsAnnotations = { module = "org.jetbrains:annotations", version.ref = "jetbrainsAnnotations" }
+jfoenix = { module = "com.jfoenix:jfoenix", version.ref = "jfoenix" }
+controlsfx = { module = "org.controlsfx:controlsfx", version.ref = "controlsfx" }
+formsfxCore = { module = "com.dlsc.formsfx:formsfx-core", version.ref = "formsfx" }
+validatorfx = { module = "net.synedra:validatorfx", version.ref = "validatorfx" }
+ikonliJavafx = { module = "org.kordamp.ikonli:ikonli-javafx", version.ref = "ikonli" }
+bootstrapfxCore = { module = "org.kordamp.bootstrapfx:bootstrapfx-core", version.ref = "bootstrapfx" }
+atlantafxBase = { module = "io.github.mkpaz:atlantafx-base", version.ref = "atlantafx" }
+materialfx = { module = "io.github.palexdev:materialfx", version.ref = "materialfx" }
+javaDbf = { module = "com.github.albfernandez:javadbf", version.ref = "javadbf" }
+apacheCommonsNet = { module = "commons-net:commons-net", version.ref = "apacheCommonsNet" }
+
+poiOoxml = { module = "org.apache.poi:poi-ooxml", version.ref = "apachePoi" }
+pdfbox = { module = "org.apache.pdfbox:pdfbox", version.ref = "pdfbox" }
+jssc = { module = "io.github.java-native:jssc", version.ref = "jssc" }
+jnaPlatform = { module = "net.java.dev.jna:jna-platform", version.ref = "jna" }
+mapstruct = { module = "org.mapstruct:mapstruct", version.ref = "mapstruct" }
+mapstructProcessor = { module = "org.mapstruct:mapstruct-processor", version.ref = "mapstruct" }
+log4jToSlf4j = { module = "org.apache.logging.log4j:log4j-to-slf4j", version.ref = "log4j" }
+
+[bundles]
+logging = ["slf4jApi", "logbackClassic", "logbackCore", "log4jToSlf4j"]
+javafx-ui = ["jfoenix", "controlsfx", "formsfxCore", "validatorfx", "ikonliJavafx", "bootstrapfxCore", "atlantafxBase", "materialfx"]
+testing = ["junitJupiter"]
+
+[plugins]
+fx-plugin = { id = "org.openjfx.javafxplugin", version.ref = "javafxPlugin" }
+jlink-plugin = { id = "org.beryx.jlink", version.ref = "jlinkPlugin" }
+module-plugin = { id = "org.javamodularity.moduleplugin", version.ref = "modulePlugin" }

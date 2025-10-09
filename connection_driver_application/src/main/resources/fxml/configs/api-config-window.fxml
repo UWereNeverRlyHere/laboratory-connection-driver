@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<TitledPane fx:id="apiTitledPane" 
+            styleClass="titled-pane-bold" 
+            text="Налаштування API" 
+            xmlns="http://javafx.com/javafx/" 
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="ywh.fx_app.configs.ApiConfigWindowController">
+
+    <VBox spacing="5">
+        <MFXFilterComboBox fx:id="resultsUrlCombo" allowEdit="true" floatingText="Results URL" maxWidth="1.7976931348623157E308">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </MFXFilterComboBox>
+        <MFXFilterComboBox fx:id="ordersUrlCombo" allowEdit="true" floatingText="Orders URL" maxWidth="1.7976931348623157E308">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </MFXFilterComboBox>
+
+        <MFXComboBox fx:id="timeOutComboBox" allowEdit="false" floatingText="Result time out (msec)" maxWidth="1.7976931348623157E308">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </MFXComboBox>
+
+        <MFXComboBox fx:id="orderTimeOutComboBox" allowEdit="false" floatingText="Order time out (msec)" maxWidth="1.7976931348623157E308">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </MFXComboBox>
+
+    </VBox>
+</TitledPane>

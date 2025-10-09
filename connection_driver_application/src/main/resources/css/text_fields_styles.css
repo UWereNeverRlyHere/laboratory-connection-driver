@@ -1,0 +1,45 @@
+.transparent-text {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-font-size: 1.07em;
+    -fx-font-family: "Open Sans Regular";
+    -fx-font-weight: bold;
+    -jfx-unfocus-color: rgb(202, 189, 189);
+    -jfx-focus-color: -fx-primary-accent-color;
+}
+
+.mfx-text-field {
+    -fx-border-color: -fx-field-border-color;
+    -fx-background-color: -fx-field-background-color;
+    -fx-border-width: 2px;
+    -fx-border-radius: 6px;
+    -fx-background-radius: 6px;
+    -mfx-gap: 4;
+}
+
+.mfx-text-field:focus-within {
+    -fx-border-color: -fx-primary-accent-color;
+    -fx-border-insets: 0;
+    -fx-background-insets: 0;
+    -fx-border-style: solid;
+}
+.mfx-text-field:hover {
+    -fx-effect: innershadow(gaussian, rgba(0, 0, 0, 0.2), 8, 0.3, 0, 0),
+    dropshadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0.0, 0, 2);
+}
+
+.mfx-text-field .floating-text {
+    -fx-background-color: transparent;
+    -fx-text-fill: -mfx-text-he;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+.mfx-text-field:floating .floating-text {
+    -fx-background-color: transparent;
+    -fx-text-fill: -mfx-text-he;
+}
+.mfx-text-field:focus-within .floating-text {
+    -fx-background-color: transparent;
+    -fx-text-fill: -mfx-text-he;
+}
+

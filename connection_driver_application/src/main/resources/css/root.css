@@ -1,0 +1,10 @@
+.root{
+    -fx-primary-accent-color: #4059a9;
+    -fx-field-background-color: #f5f5f5;
+    -fx-field-border-color: #e4e1e1;
+    -fx-text-color-muted: #666;
+    -fx-text-color-active: #2196F3;
+    -fx-font-size-small: 12px;
+    -fx-font-size-medium: 14px;
+    -fx-font-size-large: 16px;
+}

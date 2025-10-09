@@ -1,0 +1,217 @@
+plugins {
+    application
+    alias(libs.plugins.fx.plugin)
+    alias(libs.plugins.jlink.plugin)
+}
+
+application {
+    mainClass.set("application.fx_app.ywh.labs.DriverApp")
+    mainModule.set("connection.driver.application")
+
+    applicationDefaultJvmArgs = listOf(
+        "-Dfile.encoding=UTF-8",
+        "-Duser.language=ua",
+        "-Duser.country=UA",
+        "-Dapp.single.instance=true",
+
+        "--add-opens", "javafx.base/com.sun.javafx.event=com.jfoenix",
+        "--add-opens", "javafx.controls/com.sun.javafx.scene.control.behavior=com.jfoenix",
+        "--add-opens", "javafx.controls/javafx.scene.control.skin=com.jfoenix",
+        "--add-opens", "javafx.graphics/com.sun.javafx.scene.control=com.jfoenix",
+        "--add-opens", "javafx.base/com.sun.javafx.binding=com.jfoenix",
+        "--add-opens", "javafx.graphics/com.sun.javafx.util=com.jfoenix",
+        "--add-opens", "java.base/java.lang.reflect=com.jfoenix",
+
+        "--add-exports", "javafx.graphics/com.sun.javafx.scene.control=ALL-UNNAMED",
+        "--add-exports", "javafx.controls/com.sun.javafx.scene.control=ALL-UNNAMED",
+        "--add-exports", "javafx.controls/com.sun.javafx.scene.control.behavior=ALL-UNNAMED",
+        "--add-exports", "javafx.controls/com.sun.javafx.scene.control.skin=ALL-UNNAMED",
+        "--add-exports", "javafx.base/com.sun.javafx.event=ALL-UNNAMED"
+
+    )
+
+
+}
+javafx {
+    version = rootProject.libs.versions.javafx.get()
+    modules = listOf("javafx.controls", "javafx.fxml", "javafx.swing")
+}
+
+
+jlink {
+    moduleName = "connection.driver.application"
+    // Прибираємо imageDir - не потрібно для jpackage
+    // imageDir.set(file("${rootDir}/app_build/connection-driver-win"))
+    /* imageZip.set(
+           rootProject.layout.projectDirectory
+               .dir("app_build")
+               .file("fx_app-win.zip")
+       )*/
+    addOptions("--bind-services")
+
+    options = listOf("--ignore-signing-information")
+
+    // Створює інсталятор з вбудованим JRE
+    jpackage {
+        outputDir = "${rootDir}/app_build/jpackage-output"
+        imageName = "laboratory-mini-connection-driver"
+
+        skipInstaller = false
+        installerType = "msi"
+        installerName = "connection-driver_installer"
+
+        appVersion = "1.0.0"
+        vendor = "YWH Labs"
+        description = "Програмний драйвер для підключення лабораторних аналізаторів"
+
+        // Windows-specific options
+        installerOptions = listOf(
+            "--win-per-user-install",
+            "--win-dir-chooser",
+            "--win-menu",
+            "--win-shortcut"
+        )
+
+        imageOptions = listOf(
+            "--icon", "src/main/resources/images/connection-driver-icon_big.ico"
+        )
+
+    }
+    // Add required modules
+    addExtraDependencies(
+        "javafx",
+        "javafx.controls",
+        "javafx.fxml",
+        "java.desktop",
+        "java.logging",
+        "ywh.labs.services"
+    )
+    // Handle automatic modules
+    mergedModule {
+        // Automatically add all dependencies to the merged module
+        requires("java.base")
+        requires("java.desktop")
+        requires("java.logging")
+        requires("javafx.controls")
+        requires("javafx.fxml")
+        requires("javafx.swing")
+    }
+    // Налаштування для конкретної платформи
+    targetPlatform("win", System.getProperty("java.home"))
+
+    launcher { name = "connection-driver" }
+}
+
+dependencies {
+    implementation(project(":services"))
+    implementation(project(":commons"))
+    implementation(project(":repository"))
+
+    implementation(rootProject.libs.bundles.javafx.ui)
+
+
+    // Окремі бібліотеки з exclude
+    implementation(rootProject.libs.formsfxCore) {
+        exclude(group = "org.openjfx")
+    }
+    implementation(rootProject.libs.validatorfx) {
+        exclude(group = "org.openjfx")
+    }
+
+}
+
+// Create a task to copy the runtime image to app_build directory
+
+tasks.processResources {
+    from("src/main/resources/images/connection-driver-icon_big.ico") {
+        rename { "app.ico" }
+        into("jpackage/windows")
+    }
+
+}
+
+tasks.withType<JavaCompile> {
+    options.encoding = "UTF-8"
+}
+
+tasks.named("jpackage") {
+    // Add a finalizer task to open the output directory after jpackage completes
+    finalizedBy("openJpackageOutputDir")
+}
+
+tasks.named("jpackageImage") {
+    // Add a finalizer task to open the output directory after jpackageImage completes
+    finalizedBy("openJpackageOutputDir")
+}
+
+// Task to open the jpackage output directory in Windows Explorer
+tasks.register<Exec>("openJpackageOutputDir") {
+    val outputDir = "${rootDir}/app_build/jpackage-output"
+    doFirst {
+        println("Opening jpackage output directory: $outputDir")
+    }
+    commandLine("cmd", "/c", "start", "explorer", outputDir.replace("/", "\\"))
+}
+
+
+// Task to create a ZIP archive of the application
+tasks.register<Zip>("createAppZip") {
+    dependsOn("jpackage")  // Тільки jpackage
+
+    // Тільки jpackage-output в архів
+    from("${rootDir}/app_build/jpackage-output") {
+        into("jpackage-output")
+    }
+
+    archiveFileName.set("ConnectionDriver-Installer.zip")
+    destinationDirectory.set(file("${rootDir}/app_build"))
+
+    doLast {
+        println("Created ZIP archive at ${rootDir}/app_build/ConnectionDriver-Installer.zip")
+    }
+    finalizedBy("openAppBuildDir")
+
+}
+
+tasks.register<Exec>("openAppBuildDir") {
+    val dir = "${rootDir}/app_build"
+    doFirst {
+        println("Opening directory: $dir")
+    }
+    commandLine("cmd", "/c", "start", "explorer", dir.replace("/", "\\"))
+}
+
+tasks.named("jpackage") {
+    finalizedBy("createAppZip")
+}
+
+// Task to fix the module-info.java file for JetBrains Annotations
+tasks.register("fixModuleInfo") {
+    doLast {
+        val moduleInfoFile =
+            file("${layout.buildDirectory.get()}/jlinkbase/tmpjars/ywh.labs.merged.module/module-info.java")
+        if (moduleInfoFile.exists()) {
+            println("Fixing module-info.java file for JetBrains Annotations")
+            val content = moduleInfoFile.readText()
+            val fixedContent =
+                content.replace("requires org.jetbrains.annotations;", "requires static org.jetbrains.annotations;")
+            moduleInfoFile.writeText(fixedContent)
+            println("Module-info.java file fixed")
+        } else {
+            println("Module-info.java file not found at ${moduleInfoFile.absolutePath}")
+        }
+    }
+}
+
+// Make jlink depend on fixModuleInfo
+tasks.named("jlink") {
+    dependsOn("fixModuleInfo")
+}
+
+// We no longer delete module-info.java as we're now using Java modules
+
+// IntelliJ IDEA Run Configuration:
+// Run -> Edit Configurations -> Add New Configuration -> Gradle
+// Gradle project: Mini_Laboratory_Connection_Driver
+// Tasks: :connection_driver_application:clean :connection_driver_application:jpackage
+// Arguments: --warning-mode all

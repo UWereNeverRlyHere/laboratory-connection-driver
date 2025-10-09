@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="false">
+    <!-- SiftingAppender для device логгерів -->
+    <appender name="DEVICES" class="ch.qos.logback.classic.sift.SiftingAppender">
+        <discriminator class="ywh.logging.LoggerNameBasedDiscriminator">
+            <key>deviceName</key>
+            <defaultValue>unknown</defaultValue>
+        </discriminator>
+        
+        <sift>
+            <appender name="FILE-${deviceName}" class="ch.qos.logback.core.rolling.RollingFileAppender">
+                <file>logs/${deviceName}.log</file>
+                <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+                    <fileNamePattern>logs/${deviceName}.%i.log</fileNamePattern>
+                    <minIndex>1</minIndex>
+                    <maxIndex>5</maxIndex>
+                </rollingPolicy>
+                <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+                    <maxFileSize>50MB</maxFileSize>
+                </triggeringPolicy>
+                <encoder>
+                    <charset>UTF-8</charset>
+                    <pattern>%d{yyyy.MM.dd HH:mm:ss.SSS} %msg%n</pattern>
+                </encoder>
+            </appender>
+        </sift>
+    </appender>
+
+    <!-- Консольний аппендер для відладки -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <!-- ✅ ERROR завжди червоний, решта - як є -->
+            <pattern>%cyan([DEVICE]) %green(%d{HH:mm:ss.SSS} %logger{36}) - %highlight(%-5level) %msg%n</pattern>
+        </encoder>
+    </appender>
+
+
+    <!-- Кореневий логгер -->
+    <root level="INFO">
+        <appender-ref ref="DEVICES"/>
+        <appender-ref ref="CONSOLE"/>
+    </root>
+</configuration>

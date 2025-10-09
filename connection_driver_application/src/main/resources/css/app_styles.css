@@ -1,0 +1,30 @@
+/* Floating Group Styles */
+.floating-group {
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 1;
+    -fx-border-radius: 4;
+    -fx-background-color: white;
+    -fx-background-radius: 4;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 2, 0, 0, 1);
+}
+
+.floating-group:focused{
+    -fx-border-color: #2196F3;
+}
+
+.floating-group-label {
+    -fx-text-fill: #666;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-background-color: white;
+    -fx-padding: 0 5 0 5;
+}
+
+.floating-group-content {
+    -fx-spacing: 5;
+}
+
+/* Стиль для активного стану */
+.floating-group .floating-group-label {
+    -fx-text-fill: #2196F3;
+}
