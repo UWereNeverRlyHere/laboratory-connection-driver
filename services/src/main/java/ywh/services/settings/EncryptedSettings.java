@@ -31,7 +31,7 @@ public class EncryptedSettings {
     @Getter
     private static ProgramSettings cash = new ProgramSettings();
     // Файл, в котором хранятся зашифрованные настройки
-    private static final Path CONF = Paths.get("data.dat");
+    private static final Path CONF = Paths.get("config.dat");
 
     // Имя алгоритма: AES/GCM без заполнения
     private static final String CIPHER_ALGORITHM = "AES/GCM/NoPadding";
