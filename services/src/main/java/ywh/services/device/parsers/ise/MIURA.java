@@ -15,6 +15,7 @@ import ywh.services.device.protocol.astm.ASTMPartsProcessor;
 import ywh.services.device.protocol.astm.ASTMProtocolImpl;
 import ywh.services.settings.data.CommunicatorSettings;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -24,6 +25,7 @@ public class MIURA extends ParserAbstract {
     @Override
     public void parse(byte[] data) {
         ASTMPartsProcessor processor = new ASTMPartsProcessor(logger);
+        List<String> barcodes = new ArrayList<>();
         var context = new ParsingContext();
         processor
                 .setScipExtEtbSize(3)
@@ -55,10 +57,9 @@ public class MIURA extends ParserAbstract {
                 })
                 .onQuery(parts -> {  // 0 = обробляти але не скіпати
                     if (parts[2].contains("\\")) {
-                        String[] barcodes = parts[2].split("\\\\");
-                        setEnquiry(barcodes);
+                        barcodes.addAll(Arrays.asList(parts[2].split("\\\\")));
                     } else {
-                        setEnquiry(parts[2]);
+                        barcodes.add(parts[2]);
                     }
                     context.markAsOrder();
                 })
@@ -70,10 +71,14 @@ public class MIURA extends ParserAbstract {
                 });
 
         processor.processFrames(data, charset);
+        if (context.isOrderFlag()) {
+            setEnquiry(barcodes);
+        }
     }
 
-    private void setEnquiry(String... barcodes) {
+    private void setEnquiry(List<String> barcodes) {
         try {
+            barcodes = barcodes.stream().distinct().toList();
             if (!(protocol instanceof ASTMProtocolImpl astmProtocol)) {
                 logger.error("Only ASTM protocol is supported");
                 return;
@@ -164,8 +169,7 @@ public class MIURA extends ParserAbstract {
                 astmProtocol.addOrderToQueue(newOrder);
                 logger.log("Order is prepared to ASTM. Adding to queue...");
 
-            }
-            else logger.log("No orders to send");
+            } else logger.log("No orders to send");
         } catch (Exception ex) {
             logger.error(" Exception while making enquiry for barcode [" + String.join(", ", barcodes) + "]", ex);
         }

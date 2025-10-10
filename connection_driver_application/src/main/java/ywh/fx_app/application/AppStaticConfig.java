@@ -19,17 +19,17 @@ public class AppStaticConfig {
     public static final String APP_NAME = "Mini laboratory connection driver V 0.3.1509";
     public static final List<FileResultActions> ALLOWED_ACTIONS = List.of(
             //FileResultActions.PRINT,
-            //FileResultActions.SAVE_PDF,
+            // FileResultActions.SAVE_PDF,
             //FileResultActions.SAVE_DOCX,
-            FileResultActions.API,
-            // FileResultActions.SEND
-            FileResultActions.CREATE_DBF_FILE
+            FileResultActions.API
+            // FileResultActions.SEND,
+            //FileResultActions.CREATE_DBF_FILE
     );
     public static final List<IParser> PARSERS = List.of(
             // ParserAbstract.create("Mindray BC30Vet Primary", new MindrayBC30Vet())
-             ParserAbstract.create("Dymind DF50 Vet", new DymindDF50Vet())
+            // ParserAbstract.create("Dymind DF50 Vet", new DymindDF50Vet())
             // ParserAbstract.create("Mindray BC 700", new Mindray700Series())
-            // ParserAbstract.create("ISE MIURA ASTM", new MIURA())
+            ParserAbstract.create("ISE MIURA ASTM", new MIURA())
             // ParserAbstract.create("Fujifilm DriChem NX 600 Primary", new DryChemNX600Vet())
     );
 

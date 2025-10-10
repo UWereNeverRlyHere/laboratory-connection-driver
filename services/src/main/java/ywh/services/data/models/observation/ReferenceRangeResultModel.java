@@ -52,6 +52,7 @@ public class ReferenceRangeResultModel {
                 deviation = ((min - numVal) / min) * 100;
                 deviationText = String.format("▼%.1f%%", deviation);
             }
+            if(deviation!= null && (deviation == Double.POSITIVE_INFINITY || deviation == Double.NEGATIVE_INFINITY))deviation = null;
         }, () -> {
             if (!value.equals(text)) {
                 deviationType = DeviationType.NOT_NORMAL;
