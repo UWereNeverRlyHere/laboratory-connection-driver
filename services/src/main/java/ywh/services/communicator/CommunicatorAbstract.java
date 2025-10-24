@@ -1,27 +1,30 @@
-package ywh.services.communicator.impl;
+package ywh.services.communicator;
 
-import ywh.services.communicator.ICommunicator;
 import ywh.services.data.enums.DeviceStatus;
 import ywh.services.device.DeviceStatusListener;
 import ywh.logging.DeviceLogger;
 
+import java.util.concurrent.atomic.AtomicReference;
+
 public abstract class CommunicatorAbstract implements ICommunicator {
     protected DeviceLogger logger;
-    protected volatile ByteListener byteListener;
+    protected final AtomicReference<ByteListener> byteListener = new AtomicReference<>();
 
     protected CommunicatorAbstract(DeviceLogger logger) {
         this.logger = logger;
     }
 
-    private volatile DeviceStatusListener deviceStatusListener; // НОВИЙ
+    private final AtomicReference<DeviceStatusListener> deviceStatusListener = new AtomicReference<>();
+
     /**
      * Повідомляє про зміну статусу підключення
      */
     protected void notifyDeviceStatus(DeviceStatus newStatus) {
-        if (deviceStatusListener != null) {
+        DeviceStatusListener listener = deviceStatusListener.get();
+        if (listener != null) {
             try {
                 // Передаємо null як oldStatus, бо комунікатор не знає попередній статус Device
-                deviceStatusListener.onStatusChanged(null, newStatus);
+                listener.onStatusChanged(null, newStatus);
             } catch (Exception e) {
                 logger.error("Error in device status listener", e);
             }
@@ -29,21 +32,22 @@ public abstract class CommunicatorAbstract implements ICommunicator {
     }
     @Override
     public void setByteListener(ByteListener listener) {
-        this.byteListener = listener;
+        this.byteListener.set(listener);
     }
 
     @Override
     public void setDeviceStatusListener(DeviceStatusListener listener) {
-        this.deviceStatusListener = listener;
+        this.deviceStatusListener.set(listener);
     }
+
     @Override
     public void clearDeviceStatusListener() {
-        this.deviceStatusListener = null;
+        this.deviceStatusListener.set(null);
     }
 
     @Override
     public void clearByteListener() {
-        this.byteListener = null;
+        this.byteListener.set(null);
     }
 
 }

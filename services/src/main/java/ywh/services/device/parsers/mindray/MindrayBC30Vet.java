@@ -2,7 +2,7 @@ package ywh.services.device.parsers.mindray;
 
 import ywh.commons.DateTime;
 import ywh.services.communicator.ICommunicator;
-import ywh.services.communicator.impl.TcpClientCommunicatorImpl;
+import ywh.services.communicator.TcpClientCommunicator;
 import ywh.services.data.enums.ObservationKey;
 import ywh.services.data.models.ParsingResult;
 import ywh.services.data.models.observation.ObservationData;
@@ -26,7 +26,7 @@ public class MindrayBC30Vet extends ParserAbstract implements IParserWithFixedPo
 
     @Override
     public ICommunicator createDefaultCommunicator(CommunicatorSettings params, DeviceLogger logger) {
-        return new TcpClientCommunicatorImpl(params.getHost(), getDefaultPort(), logger);
+        return new TcpClientCommunicator(params.getHost(), getDefaultPort(), logger);
     }
 
     @Override

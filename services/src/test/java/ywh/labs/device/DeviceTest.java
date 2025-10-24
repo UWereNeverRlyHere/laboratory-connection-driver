@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import ywh.repository.analysis.repos.RepositoryProvider;
 import ywh.repository.analysis.repos.impl.JsonIndicatorOrderRepositoryImpl;
 import ywh.repository.analysis.repos.impl.JsonIndicatorRepositoryImpl;
-import ywh.services.communicator.impl.TcpHostCommunicatorImpl;
+import ywh.services.communicator.TcpHostCommunicator;
 import ywh.services.data.enums.FileResultActions;
 import ywh.services.data.models.DeviceConfig;
 import ywh.services.device.Device;
@@ -62,7 +62,7 @@ class DeviceTest {
                 .setCommunicatorSettings(communicatorParams);
 
         var logger = new DeviceLogger(settings.getLogFileName(),settings.getCachedParser().getCharset());
-        var communicator = new TcpHostCommunicatorImpl(port, logger);
+        var communicator = new TcpHostCommunicator(port, logger);
         List<ParsingResult> results = new ArrayList<>();
         List<ProcessorResult> processorResults = new ArrayList<>();
         CountDownLatch parsed = new CountDownLatch(1);

@@ -3,7 +3,7 @@ package ywh.services.device.parsers.mindray;
 import ywh.commons.DateTime;
 import ywh.commons.TextUtils;
 import ywh.services.communicator.ICommunicator;
-import ywh.services.communicator.impl.TcpHostCommunicatorImpl;
+import ywh.services.communicator.TcpHostCommunicator;
 import ywh.services.data.models.ParsingResult;
 import ywh.services.data.models.observation.ObservationData;
 import ywh.services.device.parsers.ParserAbstract;
@@ -21,7 +21,7 @@ public class MindrayBS240Vet extends ParserAbstract {
 
     @Override
     public ICommunicator createDefaultCommunicator(CommunicatorSettings params, DeviceLogger logger) {
-        return new TcpHostCommunicatorImpl(params.getPort(), logger);
+        return new TcpHostCommunicator(params.getPort(), logger);
     }
 
     @Override

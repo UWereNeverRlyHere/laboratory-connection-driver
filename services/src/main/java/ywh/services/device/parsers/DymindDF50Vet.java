@@ -5,7 +5,7 @@ import ywh.commons.DateTime;
 import ywh.logging.DeviceLogger;
 import ywh.repository.animals.enteties.AnimalType;
 import ywh.services.communicator.ICommunicator;
-import ywh.services.communicator.impl.TcpHostCommunicatorImpl;
+import ywh.services.communicator.TcpHostCommunicator;
 import ywh.services.data.models.observation.ObservationData;
 import ywh.services.device.protocol.hl7.Hl7PartsProcessor;
 import ywh.services.device.protocol.hl7.Hl7ProtocolImpl;
@@ -16,7 +16,7 @@ public class DymindDF50Vet extends ParserAbstract {
 
     @Override
     public ICommunicator createDefaultCommunicator(CommunicatorSettings params, DeviceLogger logger) {
-        return new TcpHostCommunicatorImpl(params.getPort(), logger);
+        return new TcpHostCommunicator(params.getPort(), logger);
     }
 
 

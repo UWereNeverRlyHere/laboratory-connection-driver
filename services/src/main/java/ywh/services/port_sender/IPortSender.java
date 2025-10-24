@@ -4,6 +4,9 @@ import jssc.SerialPortException;
 import ywh.services.port_sender.impl.SerialPortSenderImpl;
 import ywh.services.port_sender.impl.TcpClientSenderImpl;
 
+/**
+ * FOR TESTS ONLY
+ */
 public interface IPortSender {
     void send(byte[] data);
 

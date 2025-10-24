@@ -1,6 +1,4 @@
-package ywh.services.communicator.impl;
-
-import ywh.services.communicator.ICommunicator;
+package ywh.services.communicator;
 
 import ywh.services.data.enums.DeviceStatus;
 import ywh.logging.DeviceLogger;
@@ -23,7 +21,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * <p>
  * Реализован блокирующим I/O — работает во виртуальных потоках, поэтому блокировки недороги.
  */
-public final class TcpClientCommunicatorImpl extends CommunicatorAbstract
+public final class TcpClientCommunicator extends CommunicatorAbstract
         implements ICommunicator, AutoCloseable {
 
     /*────────────── статическое ──────────────*/
@@ -46,7 +44,7 @@ public final class TcpClientCommunicatorImpl extends CommunicatorAbstract
             Executors.newThreadPerTaskExecutor(Thread.ofVirtual().name("tcp-reader-").factory());
 
     /*────────────── ctor ──────────────*/
-    public TcpClientCommunicatorImpl(String host, int port, DeviceLogger logger) {
+    public TcpClientCommunicator(String host, int port, DeviceLogger logger) {
         super(logger);
         this.host = host;
         this.port = port;
@@ -188,7 +186,7 @@ public final class TcpClientCommunicatorImpl extends CommunicatorAbstract
                 buf.flip();
                 while (buf.hasRemaining()) {
                     byte b = buf.get();
-                    if (byteListener != null) byteListener.onByte(b);
+                    if (byteListener != null) byteListener.get().onByte(b);
                 }
                 buf.clear();
             }

@@ -1,4 +1,4 @@
-package ywh.services.communicator.impl;
+package ywh.services.communicator;
 
 import ywh.services.data.enums.DeviceStatus;
 import ywh.services.exceptions.DeviceRuntimeException;
@@ -20,7 +20,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * TCP-хост, що підтримує тільки ОДНЕ клієнтське з’єднання.
  * Після розриву – очікує наступного клієнта.
  */
-public final class TcpHostCommunicatorImpl extends CommunicatorAbstract implements AutoCloseable {
+public final class TcpHostCommunicator extends CommunicatorAbstract implements AutoCloseable {
 
     private static final int BUFFER_SIZE = 1024;
 
@@ -38,10 +38,10 @@ public final class TcpHostCommunicatorImpl extends CommunicatorAbstract implemen
     private final ExecutorService clientPool = Executors.newThreadPerTaskExecutor(Thread.ofVirtual().name("tcp-client-").factory());
 
     // ────────────────────────── конструктор ──────────────────────────
-    public TcpHostCommunicatorImpl(int port, DeviceLogger logger) {
+    public TcpHostCommunicator(int port, DeviceLogger logger) {
         super(logger);
         this.port = port;
-        logger.log("Initialized TcpHostCommunicatorImpl for port " + port + " (server not started yet)");
+        logger.log("Initializing TcpHostCommunicatorImpl for port " + port + " (server not started yet)");
     }
 
     // ────────────────────────── ICommunicator ──────────────────────────
@@ -174,7 +174,7 @@ public final class TcpHostCommunicatorImpl extends CommunicatorAbstract implemen
                 buf.flip();
                 while (buf.hasRemaining()) {
                     byte b = buf.get();
-                    if (byteListener != null) byteListener.onByte(b);
+                    if (byteListener != null) byteListener.get().onByte(b);
                 }
                 buf.clear();
             }

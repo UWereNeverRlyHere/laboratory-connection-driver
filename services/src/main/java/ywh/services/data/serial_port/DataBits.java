@@ -7,29 +7,18 @@ public enum DataBits {
     DT_8(8);
 
 
-    private final int dataBit;
-    DataBits(int dataBit) {
-        this.dataBit = dataBit;
+    private final int value;
+    DataBits(int value) {
+        this.value = value;
     }
 
     public int toInt() {
-        return dataBit;
+        return value;
     }
 
 
     @Override
     public String toString() {
-        switch (this){
-            case DT_5:
-                return "5 біт";
-            case DT_6:
-                return "6 біт";
-            case DT_7:
-                return "7 біт";
-            case DT_8:
-                return "8 біт";
-            default:
-                return super.toString();
-        }
+        return value + " біт";
     }
 }

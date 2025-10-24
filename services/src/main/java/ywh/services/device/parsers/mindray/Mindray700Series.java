@@ -2,10 +2,7 @@ package ywh.services.device.parsers.mindray;
 
 import ywh.commons.DateTime;
 import ywh.services.communicator.ICommunicator;
-import ywh.services.communicator.impl.TcpHostCommunicatorImpl;
-import ywh.services.data.models.ParsingResult;
-import ywh.services.data.models.observation.ObservationData;
-import ywh.services.data.models.observation.ReferenceRangeResultModel;
+import ywh.services.communicator.TcpHostCommunicator;
 import ywh.services.device.parsers.ParserAbstract;
 import ywh.services.device.parsers.ParserInfo;
 import ywh.services.device.parsers.ParsingContext;
@@ -13,8 +10,6 @@ import ywh.services.device.protocol.astm.ASTMPartsProcessor;
 import ywh.services.device.protocol.astm.ASTMProtocolImpl;
 import ywh.services.settings.data.CommunicatorSettings;
 import ywh.logging.DeviceLogger;
-
-import java.util.concurrent.atomic.AtomicReference;
 
 import static ywh.services.device.parsers.mindray.MindrayBC30Vet.SKIP_LIST;
 
@@ -71,6 +66,6 @@ public class Mindray700Series extends ParserAbstract {
 
     @Override
     public ICommunicator createDefaultCommunicator(CommunicatorSettings params, DeviceLogger logger) {
-        return new TcpHostCommunicatorImpl(params.getPort(), logger);
+        return new TcpHostCommunicator(params.getPort(), logger);
     }
 }

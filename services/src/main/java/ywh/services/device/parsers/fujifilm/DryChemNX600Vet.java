@@ -5,9 +5,7 @@ import org.jetbrains.annotations.NotNull;
 import ywh.commons.DateTime;
 import ywh.repository.animals.enteties.AnimalType;
 import ywh.services.communicator.ICommunicator;
-import ywh.services.communicator.impl.TcpHostCommunicatorImpl;
-import ywh.services.data.models.ParsingResult;
-import ywh.services.data.models.observation.ObservationData;
+import ywh.services.communicator.TcpHostCommunicator;
 import ywh.services.device.parsers.ParserAbstract;
 import ywh.services.device.parsers.ParserInfo;
 import ywh.services.device.parsers.ParsingContext;
@@ -17,15 +15,13 @@ import ywh.services.device.protocol.hl7.Hl7ResponseBuilder;
 import ywh.services.settings.data.CommunicatorSettings;
 import ywh.logging.DeviceLogger;
 
-import java.util.concurrent.atomic.AtomicReference;
-
 @ParserInfo(name = "Fujifilm DriChem NX 600 VET", defaultProtocol = Hl7ProtocolImpl.class, encoding = "utf-8")
 
 public class DryChemNX600Vet extends ParserAbstract {
 
     @Override
     public ICommunicator createDefaultCommunicator(CommunicatorSettings params, DeviceLogger logger) {
-        return new TcpHostCommunicatorImpl(params.getPort(), logger);
+        return new TcpHostCommunicator(params.getPort(), logger);
     }
 
     private int hostMsgId = 1;

@@ -1,8 +1,15 @@
 package ywh.services.data.serial_port;
 
-import java.io.Serializable;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 
+import java.io.Serializable;
+@Data
+@AllArgsConstructor
+@Builder
 public class SerialPortParams implements Serializable {
+    private String portName = "";
     private Parity parity = Parity.PARITY_NONE;
     private StopBits stopBits = StopBits.SB_1;
     private DataBits dataBits = DataBits.DT_8;
@@ -22,35 +29,4 @@ public class SerialPortParams implements Serializable {
         this.baudRate = baudRate;
     }
 
-    public Parity getParity() {
-        return parity;
-    }
-
-    public void setParity(Parity parity) {
-        this.parity = parity;
-    }
-
-    public StopBits getStopBits() {
-        return stopBits;
-    }
-
-    public void setStopBits(StopBits stopBits) {
-        this.stopBits = stopBits;
-    }
-
-    public DataBits getDataBits() {
-        return dataBits;
-    }
-
-    public void setDataBits(DataBits dataBits) {
-        this.dataBits = dataBits;
-    }
-
-    public BaudRate getBaudRate() {
-        return baudRate;
-    }
-
-    public void setBaudRate(BaudRate baudRate) {
-        this.baudRate = baudRate;
-    }
 }

@@ -3,7 +3,7 @@ package ywh.services.device.parsers.ise;
 import ywh.commons.DateTime;
 import ywh.logging.DeviceLogger;
 import ywh.services.communicator.ICommunicator;
-import ywh.services.communicator.impl.TcpHostCommunicatorImpl;
+import ywh.services.communicator.TcpHostCommunicator;
 import ywh.services.data.models.api.Order;
 import ywh.services.data.models.api.PatientData;
 import ywh.services.data_processor.APIProcessor;
@@ -179,6 +179,6 @@ public class MIURA extends ParserAbstract {
 
     @Override
     public ICommunicator createDefaultCommunicator(CommunicatorSettings params, DeviceLogger logger) {
-        return new TcpHostCommunicatorImpl(params.getPort(), logger);
+        return new TcpHostCommunicator(params.getPort(), logger);
     }
 }
