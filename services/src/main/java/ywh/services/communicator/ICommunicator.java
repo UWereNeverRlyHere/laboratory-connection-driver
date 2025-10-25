@@ -15,8 +15,8 @@ public interface ICommunicator extends Runnable, AutoCloseable {
             case TCP_CLIENT -> {
                 return new TcpClientCommunicator(params.getHost(), params.getPort(), logger);
             }
-            case COM -> {
-                //TODO createApi communicator
+            case SERIAL -> {
+                return new SerialCommunicator(params.getSerialParams(), logger);
             }
             case FILE -> {
                 //TODO createApi communicator

@@ -3,21 +3,20 @@ package ywh.services.device.parsers.hti;
 
 import ywh.logging.DeviceLogger;
 import ywh.services.communicator.ICommunicator;
-import ywh.services.communicator.SerialCommunicator;
 import ywh.services.data.serial_port.BaudRate;
 import ywh.services.data.serial_port.SerialParams;
 import ywh.services.device.ISerialParser;
 import ywh.services.device.parsers.CustomParserAbstract;
-import ywh.services.device.parsers.ParserAbstract;
 import ywh.services.device.parsers.ParserMetaData;
 import ywh.services.device.protocol.custom.CustomProtocol;
+import ywh.services.device.protocol.custom.StrategyFactory;
 import ywh.services.settings.data.CommunicatorSettings;
 
-@ParserMetaData(name = "Mindray BC-700 Series", defaultProtocol = CustomProtocol.class, encoding = "utf-8")
-public class MicroCC extends CustomParserAbstract implements ISerialParser {
+@ParserMetaData(name = "HTI MicroCC-20 Plus VET", defaultProtocol = CustomProtocol.class, encoding = "utf-8")
+public class MicroCCVet extends CustomParserAbstract implements ISerialParser {
     @Override
     public SerialParams getDefaultParams() {
-        return new SerialParams(BaudRate.BR_115200);
+        return new SerialParams("COM3",BaudRate.BR_115200);
     }
 
     @Override
@@ -27,11 +26,12 @@ public class MicroCC extends CustomParserAbstract implements ISerialParser {
 
     @Override
     public ICommunicator createDefaultCommunicator(CommunicatorSettings params, DeviceLogger logger) {
-        return null;
+      return ICommunicator.create(CommunicatorSettings.createSerialParams(getDefaultParams()), logger);
     }
 
+
     @Override
-    protected Class<?> terminationBuilder() {
-        return null;
+    protected CustomProtocol.StrategyContainer getStrategy() {
+        return StrategyFactory.byEndString(",TRANSFER FINISH").build();
     }
 }

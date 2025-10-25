@@ -3,29 +3,39 @@ package ywh.services.device.protocol.custom;
 import ywh.logging.DeviceLogger;
 import ywh.services.device.protocol.BufferedProtocolAbstract;
 
-import java.io.ByteArrayOutputStream;
-
 public class CustomProtocol extends BufferedProtocolAbstract {
 
-    private final ITerminationStrategy strategy;
+    private final ITerminationStrategy terminationStrategy;
+    private final IAckStrategy ackStrategy;
 
-
-    protected CustomProtocol(ITerminationStrategy strategy, DeviceLogger logger, long idleTimeoutMs) {
+    public CustomProtocol(StrategyContainer strategyContainer, DeviceLogger logger, long idleTimeoutMs) {
         super(logger, idleTimeoutMs);
-        this.strategy = strategy;
+        this.terminationStrategy = strategyContainer.terminationStrategy();
+        this.ackStrategy = strategyContainer.ackStrategy();
     }
 
     @Override
     public void onByte(byte b) {
         append(b);
-        if (strategy.analyze(b, buf)) {
+        if (terminationStrategy.analyze(b, buf)) {
             fireFrame();
         }
+        ackStrategy.analyze(b, buf).ifPresent(ack -> transport.send(ack));
     }
 
     @Override
     public void reset() {
         super.reset();
-        strategy.reset();
+        ackStrategy.reset();
+        terminationStrategy.reset();
     }
+
+
+    public record StrategyContainer(ITerminationStrategy terminationStrategy, IAckStrategy ackStrategy) {
+        public StrategyContainer(ITerminationStrategy terminationStrategy) {
+            this(terminationStrategy, new IAckStrategy() {
+            });
+        }
+    }
+
 }

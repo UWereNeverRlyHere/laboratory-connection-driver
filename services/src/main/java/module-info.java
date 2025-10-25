@@ -69,5 +69,6 @@ module ywh.labs.services {
     requires static lombok;
     requires java.net.http;
     requires org.apache.commons.net;
+    requires ywh.labs.services;
 
 }

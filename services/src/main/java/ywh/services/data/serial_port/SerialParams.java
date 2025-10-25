@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 
 import java.io.Serializable;
+
 @Data
 @AllArgsConstructor
 @Builder
@@ -30,4 +31,8 @@ public class SerialParams implements Serializable {
         this.baudRate = baudRate;
     }
 
+    public SerialParams(String portName, BaudRate baudRate) {
+        this(baudRate);
+        this.portName = portName;
+    }
 }
