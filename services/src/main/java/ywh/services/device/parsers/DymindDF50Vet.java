@@ -8,9 +8,9 @@ import ywh.services.communicator.ICommunicator;
 import ywh.services.communicator.TcpHostCommunicator;
 import ywh.services.data.models.observation.ObservationData;
 import ywh.services.device.protocol.hl7.Hl7PartsProcessor;
-import ywh.services.device.protocol.hl7.Hl7ProtocolImpl;
+import ywh.services.device.protocol.hl7.Hl7Protocol;
 import ywh.services.settings.data.CommunicatorSettings;
-@ParserInfo(name ="Dymind DF50 VET HL7", defaultProtocol = Hl7ProtocolImpl.class, encoding = "utf-8")
+@ParserMetaData(name ="Dymind DF50 VET HL7", defaultProtocol = Hl7Protocol.class, encoding = "utf-8")
 
 public class DymindDF50Vet extends ParserAbstract {
 

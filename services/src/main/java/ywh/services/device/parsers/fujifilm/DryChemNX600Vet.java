@@ -7,15 +7,15 @@ import ywh.repository.animals.enteties.AnimalType;
 import ywh.services.communicator.ICommunicator;
 import ywh.services.communicator.TcpHostCommunicator;
 import ywh.services.device.parsers.ParserAbstract;
-import ywh.services.device.parsers.ParserInfo;
+import ywh.services.device.parsers.ParserMetaData;
 import ywh.services.device.parsers.ParsingContext;
 import ywh.services.device.protocol.hl7.Hl7PartsProcessor;
-import ywh.services.device.protocol.hl7.Hl7ProtocolImpl;
+import ywh.services.device.protocol.hl7.Hl7Protocol;
 import ywh.services.device.protocol.hl7.Hl7ResponseBuilder;
 import ywh.services.settings.data.CommunicatorSettings;
 import ywh.logging.DeviceLogger;
 
-@ParserInfo(name = "Fujifilm DriChem NX 600 VET", defaultProtocol = Hl7ProtocolImpl.class, encoding = "utf-8")
+@ParserMetaData(name = "Fujifilm DriChem NX 600 VET", defaultProtocol = Hl7Protocol.class, encoding = "utf-8")
 
 public class DryChemNX600Vet extends ParserAbstract {
 

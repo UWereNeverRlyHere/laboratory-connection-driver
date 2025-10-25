@@ -5,10 +5,8 @@ import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.FutureTask;
+import java.util.concurrent.*;
+import java.util.function.Supplier;
 
 /**
  * Утилита для запуска задач в виртуальных/физических потоках
@@ -24,6 +22,47 @@ public final class Task {
             = Executors.newThreadPerTaskExecutor(Thread.ofVirtual().factory());
     private static final List<CompletableFuture<?>> RUNNING
             = Collections.synchronizedList(new ArrayList<>());
+
+    /* ────────────────── KEY-LOCKED TASKS ────────────────── */
+
+    /** семафори «одна задача на ключ» */
+    private static final ConcurrentHashMap<String, Semaphore> KEYED = new ConcurrentHashMap<>();
+
+    /**
+     * Запускає задачу у {@link #POOL}, гарантуючи,
+     * що одночасно виконується максимум одна задача з тим самим ключем.
+     *
+     * @param key   логічний ключ блокування (null/"" → "default")
+     * @param task  постачальник результату
+     */
+    public static <T> CompletableFuture<T> startDetached(String key, Supplier<T> task) {
+        final String k = (key == null || key.isEmpty()) ? "default" : key;
+
+        return CompletableFuture.supplyAsync(() -> {
+            final Semaphore sem = KEYED.computeIfAbsent(k, finalKey -> new Semaphore(1, true));
+            try {
+                sem.acquire();
+                return task.get();
+            } catch (InterruptedException ie) {
+                Thread.currentThread().interrupt();
+                throw new RuntimeException("Task interrupted (key=" + k + ")", ie);
+            } finally {
+                sem.release();
+                // clean-up, коли більше ніхто не чекає
+                if (!sem.hasQueuedThreads() && sem.availablePermits() == 1) {
+                    KEYED.remove(k, sem);
+                }
+            }
+        }, POOL);
+    }
+
+    /**
+     * ВЕРСІЯ без результату.
+     */
+    public static CompletableFuture<Void> startDetached(String key, Runnable task) {
+        return startDetached(key, () -> { task.run(); return null; });
+    }
+
 
     public static Thread startDetached(Runnable task) {
         return Thread.startVirtualThread(task);

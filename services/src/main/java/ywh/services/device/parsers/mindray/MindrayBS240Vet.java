@@ -7,15 +7,15 @@ import ywh.services.communicator.TcpHostCommunicator;
 import ywh.services.data.models.ParsingResult;
 import ywh.services.data.models.observation.ObservationData;
 import ywh.services.device.parsers.ParserAbstract;
-import ywh.services.device.parsers.ParserInfo;
+import ywh.services.device.parsers.ParserMetaData;
 import ywh.services.device.protocol.astm.ASTMPartsProcessor;
-import ywh.services.device.protocol.hl7.Hl7ProtocolImpl;
+import ywh.services.device.protocol.hl7.Hl7Protocol;
 import ywh.services.settings.data.CommunicatorSettings;
 import ywh.logging.DeviceLogger;
 
 import java.util.concurrent.atomic.AtomicReference;
 
-@ParserInfo(name = "Mindray BS 240 ASTM", defaultProtocol = Hl7ProtocolImpl.class, encoding = "windows-1251")
+@ParserMetaData(name = "Mindray BS 240 ASTM", defaultProtocol = Hl7Protocol.class, encoding = "windows-1251")
 public class MindrayBS240Vet extends ParserAbstract {
 
 

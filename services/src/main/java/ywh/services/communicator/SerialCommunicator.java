@@ -6,29 +6,27 @@ import jssc.SerialPortEventListener;
 import jssc.SerialPortException;
 import ywh.logging.DeviceLogger;
 import ywh.services.data.enums.DeviceStatus;
-import ywh.services.data.serial_port.SerialPortParams;
+import ywh.services.data.serial_port.SerialParams;
 
 import java.time.Duration;
-import java.util.Timer;
-import java.util.TimerTask;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-public class SerialPortCommunicator extends CommunicatorAbstract implements AutoCloseable {
+public class SerialCommunicator extends CommunicatorAbstract implements AutoCloseable {
     private static final Duration RETRY_DELAY = Duration.ofSeconds(5);
     private static final Duration AVAILABILITY_POLL = Duration.ofMillis(500);
 
     private final SerialPort serialPort;
-    private final SerialPortParams params;
+    private final SerialParams params;
 
     private final ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor(Thread.ofVirtual().name("serial-comm").factory());
     private final AtomicBoolean closed = new AtomicBoolean(false);
     private Future<?> availabilityFuture;
 
-    protected SerialPortCommunicator(SerialPortParams params, DeviceLogger logger) {
+    protected SerialCommunicator(SerialParams params, DeviceLogger logger) {
         super(logger);
         logger.log("Initializing SerialPortCommunicator for port " + params.getPortName());
         logger.log("Serial port params: [" + params.getBaudRate() + ", " + params.getDataBits() + ", " + params.getStopBits() + ", " + params.getParity() + "]");

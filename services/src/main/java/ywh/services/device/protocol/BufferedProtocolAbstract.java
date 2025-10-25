@@ -11,7 +11,7 @@ import java.util.concurrent.*;
 public abstract class BufferedProtocolAbstract implements IProtocol, IPauseTransport, AutoCloseable {
 
 
-    private final ByteArrayOutputStream buf = new ByteArrayOutputStream();
+    protected final ByteArrayOutputStream buf = new ByteArrayOutputStream();
     private IFrameListener listener;
     protected ITransport transport;
     protected DeviceLogger logger;

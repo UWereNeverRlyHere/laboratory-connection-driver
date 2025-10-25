@@ -4,17 +4,16 @@ import ywh.commons.DateTime;
 import ywh.services.communicator.ICommunicator;
 import ywh.services.communicator.TcpHostCommunicator;
 import ywh.services.device.parsers.ParserAbstract;
-import ywh.services.device.parsers.ParserInfo;
+import ywh.services.device.parsers.ParserMetaData;
 import ywh.services.device.parsers.ParsingContext;
 import ywh.services.device.protocol.astm.ASTMPartsProcessor;
-import ywh.services.device.protocol.astm.ASTMProtocolImpl;
+import ywh.services.device.protocol.astm.ASTMProtocol;
 import ywh.services.settings.data.CommunicatorSettings;
 import ywh.logging.DeviceLogger;
 
 import static ywh.services.device.parsers.mindray.MindrayBC30Vet.SKIP_LIST;
 
-@ParserInfo(name = "Mindray BC-700 Series", defaultProtocol = ASTMProtocolImpl.class, encoding = "utf-8")
-
+@ParserMetaData(name = "Mindray BC-700 Series", defaultProtocol = ASTMProtocol.class, encoding = "utf-8")
 public class Mindray700Series extends ParserAbstract {
 
     @Override

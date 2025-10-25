@@ -4,10 +4,8 @@ import ywh.services.data.enums.SpecialBytes;
 import ywh.services.device.protocol.BufferedProtocolAbstract;
 import ywh.logging.DeviceLogger;
 
-public final class Hl7ProtocolImpl extends BufferedProtocolAbstract {
-
-
-    public Hl7ProtocolImpl(DeviceLogger logger, long idleTimeoutMs) {
+public final class Hl7Protocol extends BufferedProtocolAbstract {
+    public Hl7Protocol(DeviceLogger logger, long idleTimeoutMs) {
         super(logger, idleTimeoutMs);
     }
 
@@ -24,9 +22,6 @@ public final class Hl7ProtocolImpl extends BufferedProtocolAbstract {
         append(b);
 
     }
-
-
-
 
     @Override
     protected void onIdleTimeout(byte[] incompleteFrame) {

@@ -8,11 +8,11 @@ import ywh.services.data.models.api.Order;
 import ywh.services.data.models.api.PatientData;
 import ywh.services.data_processor.APIProcessor;
 import ywh.services.device.parsers.ParserAbstract;
-import ywh.services.device.parsers.ParserInfo;
+import ywh.services.device.parsers.ParserMetaData;
 import ywh.services.device.parsers.ParsingContext;
 import ywh.services.device.protocol.astm.ASTMOrderBuilder;
 import ywh.services.device.protocol.astm.ASTMPartsProcessor;
-import ywh.services.device.protocol.astm.ASTMProtocolImpl;
+import ywh.services.device.protocol.astm.ASTMProtocol;
 import ywh.services.settings.data.CommunicatorSettings;
 
 import java.util.ArrayList;
@@ -20,7 +20,7 @@ import java.util.Arrays;
 import java.util.List;
 
 
-@ParserInfo(name = "ISE Miura ASTM", defaultProtocol = ASTMProtocolImpl.class, encoding = "windows-1251", sendPause = 150, defaultIdleTimeout = 15000)
+@ParserMetaData(name = "ISE Miura ASTM", defaultProtocol = ASTMProtocol.class, encoding = "windows-1251", sendPause = 150, defaultIdleTimeout = 15000)
 public class MIURA extends ParserAbstract {
     @Override
     public void parse(byte[] data) {
@@ -79,7 +79,7 @@ public class MIURA extends ParserAbstract {
     private void setEnquiry(List<String> barcodes) {
         try {
             barcodes = barcodes.stream().distinct().toList();
-            if (!(protocol instanceof ASTMProtocolImpl astmProtocol)) {
+            if (!(protocol instanceof ASTMProtocol astmProtocol)) {
                 logger.error("Only ASTM protocol is supported");
                 return;
             }

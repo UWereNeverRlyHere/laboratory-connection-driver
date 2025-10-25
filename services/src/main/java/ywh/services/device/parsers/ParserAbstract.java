@@ -4,8 +4,6 @@ import com.sun.jna.platform.win32.Guid;
 import lombok.Getter;
 import lombok.Setter;
 import ywh.services.data.models.ParsingResult;
-import ywh.services.data.models.observation.ObservationData;
-import ywh.services.data.models.observation.ReferenceRangeResultModel;
 import ywh.services.device.IParser;
 import ywh.services.device.IPauseTransport;
 import ywh.services.device.protocol.IProtocol;
@@ -16,7 +14,6 @@ import java.nio.charset.Charset;
 import java.time.Duration;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.concurrent.atomic.AtomicReference;
 
 public abstract class ParserAbstract implements IParser {
     protected DeviceLogger logger = new DeviceLogger();
@@ -38,7 +35,7 @@ public abstract class ParserAbstract implements IParser {
 
     protected ParserAbstract() {
         Class<?> parser = this.getClass();
-        ParserInfo annotation = parser.getAnnotation(ParserInfo.class);
+        ParserMetaData annotation = parser.getAnnotation(ParserMetaData.class);
         if (annotation == null) {
             throw new IllegalStateException("Parser must be annotated with @ParserInfo");
         }
@@ -54,7 +51,7 @@ public abstract class ParserAbstract implements IParser {
         this.protocol.setIdleTimeoutMs(annotation.defaultIdleTimeout());
     }
 
-    private IProtocol createProtocol(Class<? extends IProtocol> protocolClass) {
+    IProtocol createProtocol(Class<? extends IProtocol> protocolClass) {
         try {
             return protocolClass
                     .getDeclaredConstructor(DeviceLogger.class, long.class)
@@ -130,7 +127,6 @@ public abstract class ParserAbstract implements IParser {
     public String getServiceName() {
         return serviceName;
     }
-
 
 
 }

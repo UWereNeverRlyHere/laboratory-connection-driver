@@ -10,7 +10,7 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-public @interface ParserInfo {
+public @interface ParserMetaData {
     String name();
     Class<? extends IProtocol> defaultProtocol();
     String encoding() default "UTF-8";

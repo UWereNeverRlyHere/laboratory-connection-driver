@@ -94,7 +94,7 @@ public class ASTMPartsProcessor {
         ArrayList<Byte> buffer = new ArrayList<>();
         int i = 0;
         while (i < data.length) {
-            SpecialBytes specialByte = ASTMProtocolImpl.getSpecialByte(data[i]);
+            SpecialBytes specialByte = ASTMProtocol.getSpecialByte(data[i]);
             if (specialByte != null) {
                 switch (specialByte) {
                     case EOT, ENQ, STX -> {

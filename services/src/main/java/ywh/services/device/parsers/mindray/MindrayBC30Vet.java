@@ -8,10 +8,10 @@ import ywh.services.data.models.ParsingResult;
 import ywh.services.data.models.observation.ObservationData;
 import ywh.services.device.IParserWithFixedPort;
 import ywh.services.device.parsers.ParserAbstract;
-import ywh.services.device.parsers.ParserInfo;
+import ywh.services.device.parsers.ParserMetaData;
 import ywh.services.device.protocol.hl7.HL7V231Helper;
 import ywh.services.device.protocol.hl7.Hl7PartsProcessor;
-import ywh.services.device.protocol.hl7.Hl7ProtocolImpl;
+import ywh.services.device.protocol.hl7.Hl7Protocol;
 import ywh.services.settings.data.CommunicatorSettings;
 import ywh.logging.DeviceLogger;
 
@@ -20,7 +20,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicReference;
 
-@ParserInfo(name ="Mindray BC 30 VET HL7", defaultProtocol = Hl7ProtocolImpl.class, encoding = "utf-8")
+@ParserMetaData(name ="Mindray BC 30 VET HL7", defaultProtocol = Hl7Protocol.class, encoding = "utf-8")
 public class MindrayBC30Vet extends ParserAbstract implements IParserWithFixedPort {
 
 

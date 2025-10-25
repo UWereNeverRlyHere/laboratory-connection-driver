@@ -7,10 +7,8 @@ import ywh.services.device.protocol.BufferedProtocolAbstract;
 import java.util.Arrays;
 
 
-public class ASTMProtocolImpl extends BufferedProtocolAbstract {
-
-
-    public ASTMProtocolImpl(DeviceLogger logger, long idleTimeoutMs) {
+public class ASTMProtocol extends BufferedProtocolAbstract {
+    public ASTMProtocol(DeviceLogger logger, long idleTimeoutMs) {
         super(idleTimeoutMs);
         setLogger(logger);
     }

@@ -7,6 +7,7 @@ module ywh.labs.commons {
     requires org.slf4j;
     requires ch.qos.logback.core;
     requires static lombok;
+    requires jssc;
 
     opens ywh.logging to ch.qos.logback.classic, ch.qos.logback.core;
     exports ywh.commons.data;

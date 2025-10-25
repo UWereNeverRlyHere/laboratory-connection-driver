@@ -1,7 +1,6 @@
 module ywh.labs.services {
     // Export all packages
     exports ywh.services.communicator;
-    exports ywh.services.communicator.impl;
     exports ywh.services.data.enums;
     exports ywh.services.data.models;
     exports ywh.services.data.serial_port;
@@ -33,6 +32,7 @@ module ywh.labs.services {
     exports ywh.services.device.parsers.fujifilm;
     exports ywh.services.device.parsers.ise;
     exports ywh.services.web;
+    exports ywh.services.device.protocol.custom;
 
 
 // Required modules
