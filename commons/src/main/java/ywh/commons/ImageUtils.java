@@ -4,8 +4,11 @@ import javax.imageio.ImageIO;
 import javax.imageio.ImageReader;
 import javax.imageio.stream.ImageInputStream;
 import java.awt.image.BufferedImage;
+import java.awt.image.RenderedImage;
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.UncheckedIOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDateTime;
@@ -15,12 +18,7 @@ import java.util.Iterator;
 import java.util.Locale;
 
 public final class ImageUtils {
-
-
-    private ImageUtils() {
-    }
-
-
+    private ImageUtils() {}
 
     public static Path saveBase64Image(String base64, Path target) throws IOException {
         ConsoleUtil.printGreen(DateTime.getDateTimeForJson()+ " Конвертацію почато: " + target);
@@ -45,7 +43,6 @@ public final class ImageUtils {
         return outputPath;
     }
 
-
     public static BufferedImage decodeBase64ToBufferedImage(String base64) throws IOException {
         byte[] bytes = decodeBase64(base64);
         try (ByteArrayInputStream in = new ByteArrayInputStream(bytes)) {
@@ -66,7 +63,6 @@ public final class ImageUtils {
         return bytes;
     }
 
-
     public static byte[] decodeBase64(String base64) {
         int comma = base64.indexOf(',');
         String pureBase64 = comma >= 0 ? base64.substring(comma + 1) : base64;
@@ -82,6 +78,19 @@ public final class ImageUtils {
             }
         }
         return null;
+    }
+
+    public static String encodeImageToBase64(RenderedImage image, String format) throws UncheckedIOException {
+        try (ByteArrayOutputStream os = new ByteArrayOutputStream()) {
+            ImageIO.write(image, format, os);
+            return Base64.getEncoder().encodeToString(os.toByteArray());
+        } catch (IOException e) {
+            throw new UncheckedIOException(e);
+        }
+    }
+
+    public static String encodePngToBase64(RenderedImage image) throws UncheckedIOException {
+        return encodeImageToBase64(image, "png");
     }
 
     private static String defaultFileName(String format) {

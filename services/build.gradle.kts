@@ -11,6 +11,8 @@ dependencies {
     implementation(rootProject.libs.jssc)
     implementation(rootProject.libs.jnaPlatform)
     implementation(rootProject.libs.apacheCommonsNet)
+    implementation(rootProject.libs.jfreeChart)
+
 }
 
 tasks.register<Copy>("copyTemplates") {

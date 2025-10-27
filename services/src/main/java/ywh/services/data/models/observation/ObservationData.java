@@ -49,8 +49,10 @@ public class ObservationData {
 
 
     public void putAnimalType(String animal) {
-        this.animalType = AnimalType.define(animal.trim());
-        data.put(ObservationKey.ANIMAL_TYPE.getName(), animalType.getUaDefaultName());
+        try {
+            this.animalType = AnimalType.define(animal.trim());
+            data.put(ObservationKey.ANIMAL_TYPE.getName(), animalType.getUaDefaultName());
+        } catch (Exception ignored) {}
     }
 
     public void putAnimalType(AnimalType animal) {

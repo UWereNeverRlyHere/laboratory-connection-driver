@@ -9,7 +9,7 @@ import ywh.fx_app.app_data.ImageLoader;
 import ywh.fx_app.app_utils.StageUtils;
 import ywh.fx_app.application.AppStaticConfig;
 import ywh.services.device.Device;
-import ywh.services.device.IParser;
+import ywh.services.device.parsers.IParser;
 import ywh.logging.MainLogger;
 
 import java.io.IOException;

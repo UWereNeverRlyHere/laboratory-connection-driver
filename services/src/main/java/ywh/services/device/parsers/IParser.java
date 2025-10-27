@@ -1,4 +1,4 @@
-package ywh.services.device;
+package ywh.services.device.parsers;
 
 import ywh.services.communicator.ICommunicator;
 import ywh.services.settings.data.CommunicatorSettings;

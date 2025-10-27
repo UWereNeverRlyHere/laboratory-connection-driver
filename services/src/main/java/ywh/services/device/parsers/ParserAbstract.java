@@ -4,7 +4,6 @@ import com.sun.jna.platform.win32.Guid;
 import lombok.Getter;
 import lombok.Setter;
 import ywh.services.data.models.ParsingResult;
-import ywh.services.device.IParser;
 import ywh.services.device.IPauseTransport;
 import ywh.services.device.protocol.IProtocol;
 import ywh.logging.DeviceLogger;

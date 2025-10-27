@@ -6,7 +6,7 @@ import ywh.services.communicator.TcpClientCommunicator;
 import ywh.services.data.enums.ObservationKey;
 import ywh.services.data.models.ParsingResult;
 import ywh.services.data.models.observation.ObservationData;
-import ywh.services.device.IParserWithFixedPort;
+import ywh.services.device.parsers.IParserWithFixedPort;
 import ywh.services.device.parsers.ParserAbstract;
 import ywh.services.device.parsers.ParserMetaData;
 import ywh.services.device.protocol.hl7.HL7V231Helper;

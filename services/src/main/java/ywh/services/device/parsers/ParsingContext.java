@@ -1,6 +1,7 @@
 package ywh.services.device.parsers;
 
 import lombok.*;
+import ywh.commons.TextUtils;
 import ywh.repository.animals.enteties.AnimalType;
 import ywh.services.data.models.ParsingResult;
 import ywh.services.data.models.observation.ObservationData;
@@ -14,6 +15,7 @@ public class ParsingContext {
     @Setter
     String barcode = "";
     String id = "";
+    String tempId;
     @Getter
     ObservationData observationData = new ObservationData();
     @Getter
@@ -22,6 +24,8 @@ public class ParsingContext {
     byte [] ack = new byte[0];
 
     void reset() {
+        id = "";
+        tempId = "";
         barcode = "";
         observationData = new ObservationData();
         isOrderFlag = false;
@@ -46,6 +50,9 @@ public class ParsingContext {
     public void putId(String id) {
         this.id = id;
         observationData.putId(id);
+    }
+    public void putTempId(String id) {
+        this.tempId = id;
     }
 
     public void putDate(String date) {
@@ -92,6 +99,8 @@ public class ParsingContext {
 
     public ObservationData getCopyAndReset() {
         var data = new ObservationData(observationData);
+        if (TextUtils.isNullOrEmpty(id) && !TextUtils.isNotNullOrEmpty(tempId))
+            data.putId(tempId);
         reset();
         return data;
     }

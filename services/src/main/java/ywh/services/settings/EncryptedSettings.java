@@ -6,7 +6,7 @@ import lombok.Getter;
 import ywh.services.settings.data.ApiSettings;
 import ywh.services.settings.data.DeviceSettings;
 import ywh.services.settings.data.ProgramSettings;
-import ywh.services.device.IParser;
+import ywh.services.device.parsers.IParser;
 import ywh.services.exceptions.SettingsRepoException;
 import ywh.logging.MainLogger;
 

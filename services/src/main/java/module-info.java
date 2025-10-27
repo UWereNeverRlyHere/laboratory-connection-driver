@@ -33,6 +33,7 @@ module ywh.labs.services {
     exports ywh.services.device.parsers.ise;
     exports ywh.services.web;
     exports ywh.services.device.protocol.custom;
+    exports ywh.services.tools;
 
 
 // Required modules
@@ -69,6 +70,8 @@ module ywh.labs.services {
     requires static lombok;
     requires java.net.http;
     requires org.apache.commons.net;
+    requires org.jfree.jfreechart;
     requires ywh.labs.services;
+    requires org.apache.commons.compress;
 
 }

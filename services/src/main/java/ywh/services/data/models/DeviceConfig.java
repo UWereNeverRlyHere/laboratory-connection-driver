@@ -4,7 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import ywh.services.communicator.ICommunicator;
 import ywh.services.device.IClarificationProvider;
-import ywh.services.device.IParser;
+import ywh.services.device.parsers.IParser;
 import ywh.services.settings.data.DeviceSettings;
 import ywh.logging.DeviceLogger;
 

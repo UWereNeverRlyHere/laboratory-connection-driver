@@ -10,6 +10,7 @@ import ywh.services.data.models.DeviceConfig;
 import ywh.services.data.models.ParsingResult;
 import ywh.services.data.models.observation.ObservationData;
 import ywh.services.data_processor.ObservationResultProcessor;
+import ywh.services.device.parsers.IParser;
 import ywh.services.device.protocol.IProtocol;
 import ywh.services.exceptions.DeviceRuntimeException;
 import ywh.logging.DeviceLogger;

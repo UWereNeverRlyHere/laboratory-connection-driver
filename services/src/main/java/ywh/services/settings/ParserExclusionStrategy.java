@@ -2,7 +2,7 @@ package ywh.services.settings;
 
 import com.google.gson.ExclusionStrategy;
 import com.google.gson.FieldAttributes;
-import ywh.services.device.IParser;
+import ywh.services.device.parsers.IParser;
 
 public class ParserExclusionStrategy implements ExclusionStrategy {
     @Override

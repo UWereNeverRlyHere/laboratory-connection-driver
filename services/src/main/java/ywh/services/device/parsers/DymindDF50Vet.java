@@ -12,7 +12,7 @@ import ywh.services.device.protocol.hl7.Hl7Protocol;
 import ywh.services.settings.data.CommunicatorSettings;
 @ParserMetaData(name ="Dymind DF50 VET HL7", defaultProtocol = Hl7Protocol.class, encoding = "utf-8")
 
-public class DymindDF50Vet extends ParserAbstract {
+public class DymindDF50Vet extends ParserAbstract implements IParserWithImages{
 
     @Override
     public ICommunicator createDefaultCommunicator(CommunicatorSettings params, DeviceLogger logger) {

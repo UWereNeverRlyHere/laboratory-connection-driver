@@ -31,4 +31,17 @@ public class NumUtils {
             return false;
         }
     }
+
+    public static boolean isDouble(String digit) {
+        try {
+            Double.parseDouble(digit);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
+    public static boolean isDigit(String str) {
+        return str.matches("-?\\d+(\\.\\d+)?");
+    }
 }

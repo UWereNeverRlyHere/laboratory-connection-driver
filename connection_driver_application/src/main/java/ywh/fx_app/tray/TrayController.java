@@ -13,7 +13,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import ywh.fx_app.device.DeviceFactory;
-import ywh.services.device.IParser;
+import ywh.services.device.parsers.IParser;
 
 public class TrayController {
     @FXML

@@ -6,8 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import ywh.services.data.enums.Delimiter;
 import ywh.services.data.enums.FileResultActions;
-import ywh.services.device.IParser;
-import ywh.services.device.IParserWithFixedPort;
+import ywh.services.device.parsers.IParser;
+import ywh.services.device.parsers.IParserWithFixedPort;
 import ywh.services.printing.PrintersService;
 import ywh.services.printing.PrintingMethod;
 
