@@ -16,7 +16,6 @@ module connection.driver.application {
     opens ywh.fx_app.tray to javafx.graphics;
     opens ywh.fx_app.clarification to javafx.fxml;
 
-
     // Required modules
     requires java.base;
     requires java.desktop;
@@ -24,7 +23,7 @@ module connection.driver.application {
     // JavaFX modules
     requires javafx.controls;
     requires javafx.fxml;
-    requires javafx.swing; // Додайте цей рядок!
+    requires javafx.swing;
 
 
     // Our services module

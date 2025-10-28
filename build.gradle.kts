@@ -25,9 +25,11 @@ subprojects {
         modularity.inferModulePath.set(true)
     }
 
-
     repositories {
         mavenCentral()
+        flatDir {
+            dirs("${rootProject.projectDir}/jar-libs")
+        }
     }
 
     dependencies {
@@ -39,7 +41,6 @@ subprojects {
         }
         implementation(rootProject.libs.bundles.logging){
             exclude(group = "org.apache.logging.log4j")
-
         }
         implementation(rootProject.libs.jetbrainsAnnotations)
 
@@ -55,11 +56,18 @@ subprojects {
     tasks.test {
         useJUnitPlatform()
     }
+    tasks.withType<JavaCompile> {
+        // Глобально вимикаємо incremental для annotation processors
+        if (project.name == "repository") {
+            options.isIncremental = false
+        }
 
-
-
+        // Фікс для JDK 21 + MapStruct
+        options.compilerArgs.addAll(listOf(
+            "--add-opens", "java.base/java.text=ALL-UNNAMED"
+        ))
+    }
 }
-
 
 dependencies {
     testImplementation(platform(rootProject.libs.junit.bom))

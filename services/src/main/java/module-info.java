@@ -18,7 +18,6 @@ module ywh.labs.services {
     exports ywh.services.port_sender.impl;
     exports ywh.services.settings;
     exports ywh.services.settings.data;
-
     exports ywh.services.printing;
     exports ywh.services.data.models.observation;
     exports ywh.services.device.parsers.mindray;
@@ -59,8 +58,6 @@ module ywh.labs.services {
     requires ch.qos.logback.core;
 
 
-    // JSSC for serial port
-    requires jssc;
 
     // Optional annotations
     requires static org.jetbrains.annotations;
@@ -74,4 +71,5 @@ module ywh.labs.services {
     requires org.apache.commons.net;
     requires org.jfree.jfreechart;
     requires org.apache.commons.compress;
+    requires com.fazecast.jSerialComm;
 }

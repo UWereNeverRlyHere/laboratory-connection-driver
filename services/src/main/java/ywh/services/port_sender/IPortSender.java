@@ -1,6 +1,5 @@
 package ywh.services.port_sender;
 
-import jssc.SerialPortException;
 import ywh.services.port_sender.impl.SerialPortSenderImpl;
 import ywh.services.port_sender.impl.TcpClientSenderImpl;
 
@@ -10,7 +9,7 @@ import ywh.services.port_sender.impl.TcpClientSenderImpl;
 public interface IPortSender {
     void send(byte[] data);
 
-    static IPortSender create(String port) throws SerialPortException {
+    static IPortSender create(String port) throws Exception {
         return new SerialPortSenderImpl(port);
     }
 

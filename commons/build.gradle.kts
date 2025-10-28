@@ -1,3 +1,5 @@
+
 dependencies {
-    implementation(rootProject.libs.jssc)
+    implementation(rootProject.libs.jSerialComm)
+
 }

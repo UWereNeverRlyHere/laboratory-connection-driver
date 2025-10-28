@@ -1,4 +1,3 @@
-
 dependencies {
     implementation(project(":commons"))
     implementation(project(":repository"))
@@ -8,8 +7,8 @@ dependencies {
     //WORD TO PDF
     implementation(rootProject.libs.poiOoxml)
     implementation(rootProject.libs.pdfbox)
-    implementation(rootProject.libs.jssc)
-    runtimeOnly(rootProject.libs.jssc)
+    implementation(rootProject.libs.jSerialComm)
+
 
     implementation(rootProject.libs.jnaPlatform)
     implementation(rootProject.libs.apacheCommonsNet)
@@ -22,7 +21,6 @@ tasks.register<Copy>("copyTemplates") {
     from("templates")
     into(layout.buildDirectory.dir("libs/templates"))
 }
-
 
 
 // Додаємо копіювання утиліт у ресурси

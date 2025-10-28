@@ -29,8 +29,6 @@ application {
         "--add-exports", "javafx.base/com.sun.javafx.event=ALL-UNNAMED"
 
     )
-
-
 }
 javafx {
     version = rootProject.libs.versions.javafx.get()
@@ -84,8 +82,7 @@ jlink {
         "java.desktop",
         "java.logging",
         "ywh.labs.services",
-        "MaterialFX"
-
+        "MaterialFX",
     )
     // Handle automatic modules
     mergedModule {
@@ -96,7 +93,6 @@ jlink {
         requires("javafx.controls")
         requires("javafx.fxml")
         requires("javafx.swing")
-
     }
     // Налаштування для конкретної платформи
     targetPlatform("win", System.getProperty("java.home"))
@@ -184,7 +180,7 @@ tasks.register<Exec>("openAppBuildDir") {
 }
 
 tasks.named("jpackage") {
-   // finalizedBy("createAppZip")
+    // finalizedBy("createAppZip")
 }
 
 // Task to fix the module-info.java file for JetBrains Annotations
