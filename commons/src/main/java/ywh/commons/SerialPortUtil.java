@@ -34,7 +34,7 @@ public final class SerialPortUtil {
                     if (commPort.openPort()) {
                         // Порт успішно відкрився - він вільний
                         commPort.closePort();
-                        Thread.sleep(100);
+                        Thread.sleep(2000);
                     } else {
                         // Не вдалося відкрити - порт зайнятий
                         isBusy = true;

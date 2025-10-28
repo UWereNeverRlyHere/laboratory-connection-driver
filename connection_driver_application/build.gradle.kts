@@ -57,7 +57,7 @@ jlink {
         installerType = "msi"
         installerName = "connection-driver_installer"
 
-        appVersion = "0.3.2"
+        appVersion = "0.3.2.2710"
         vendor = "YWH Labs"
         description = "Програмний драйвер для підключення лабораторних аналізаторів"
 
@@ -81,7 +81,6 @@ jlink {
         "javafx.fxml",
         "java.desktop",
         "java.logging",
-        "ywh.labs.services",
         "MaterialFX",
     )
     // Handle automatic modules
