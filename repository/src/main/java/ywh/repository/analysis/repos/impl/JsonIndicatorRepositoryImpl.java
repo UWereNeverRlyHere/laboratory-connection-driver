@@ -129,7 +129,7 @@ public class JsonIndicatorRepositoryImpl implements IndicatorRepository {
         Optional<Indicator> indicator = findByCode(code);
         return indicator.isPresent() ? indicator : cache.values()
                 .stream()
-                .filter(ind -> ind.getCodeVariations().contains(code))
+                .filter(ind -> ind.getVariations().contains(code))
                 .findFirst();
     }
 

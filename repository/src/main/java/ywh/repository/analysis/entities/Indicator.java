@@ -15,7 +15,7 @@ public class Indicator {
     private String name;
     private String code;
     private String printName;
-    private final Set<String> codeVariations = new HashSet<>();
+    private final Set<String> variations = new HashSet<>();
     private final Set<String> orderCodes = new HashSet<>();
 
     private final Map<AnimalType, ReferenceRange> referenceRanges = new HashMap<>();
@@ -26,7 +26,7 @@ public class Indicator {
     }
 
     private boolean hasVariation(String code){
-        return codeVariations.contains(code);
+        return variations.contains(code);
     }
 
     public Optional<ReferenceRange> getReferenceRange(AnimalType animalType) {

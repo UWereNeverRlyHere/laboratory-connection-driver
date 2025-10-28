@@ -15,7 +15,7 @@ import java.util.Optional;
 public class DeviceConfig {
 
     private ICommunicator communicator;
-    private Optional<IClarificationProvider> clarificationProvider = Optional.empty();
+    private IClarificationProvider clarificationProvider;
     private IParser parser;
     private DeviceLogger logger;
     private DeviceSettings deviceSettings;
@@ -27,13 +27,12 @@ public class DeviceConfig {
     }
 
     public DeviceConfig setClarificationProvider(IClarificationProvider clarificationProvider) {
-        this.clarificationProvider = Optional.ofNullable(clarificationProvider);
+        this.clarificationProvider = clarificationProvider;
         return this;
     }
 
-    public DeviceConfig setClarificationProvider(Optional<IClarificationProvider> clarificationProvider) {
-        this.clarificationProvider = clarificationProvider != null ? clarificationProvider : Optional.empty();
-        return this;
+    public Optional<IClarificationProvider> getClarificationProvider() {
+        return Optional.ofNullable(clarificationProvider);
     }
 
     public DeviceConfig setParser(IParser parser) {

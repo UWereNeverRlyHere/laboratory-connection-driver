@@ -1,29 +1,11 @@
 [
   {
-    "name": "Альбумін",
-    "code": "ALB",
-    "printName": "ALB",
-    "analyzerCodes": ["ALB", "ALBUMIN"],
+    "name": "Лейкоцити",
+    "code": "WBC",
+    "printName": "Лейкоцити",
+    "variations": ["WBC"],
     "orderCodes": [],
     "referenceRanges": {
-      "DOG": {
-        "min": 26.0,
-        "max": 40.0,
-        "mean": 33.0,
-        "text": "26-40",
-        "animalType": "DOG",
-        "isNonNumeric": false,
-        "unit": "GRAM_PER_LITER"
-      },
-      "CAT": {
-        "min": 25.0,
-        "max": 39.0,
-        "mean": 32.0,
-        "text": "25-39",
-        "animalType": "CAT",
-        "isNonNumeric": false,
-        "unit": "GRAM_PER_LITER"
-      }
     }
   }
 ]

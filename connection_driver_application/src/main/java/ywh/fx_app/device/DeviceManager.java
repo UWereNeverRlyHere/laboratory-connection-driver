@@ -70,7 +70,6 @@ public class DeviceManager {
 
 
     private void initializeCheckers() {
-
         checkManager
              /*   .add("ftp", () -> {
                     deviceSettings.getFileResultProcessorSettings().setUseFtp(!controller.printAndFilesSettingsController.outputPathField.getFieldText().contains("\\:"));
@@ -213,7 +212,7 @@ public class DeviceManager {
                 .setCommunicator(communicator)
                 .setParser(parser)
                 .setLogger(logger)
-                .setClarificationProvider(deviceSettings.isClarificationWindow() ? Optional.of(new ClarificationProvider()) : Optional.empty())
+                .setClarificationProvider(deviceSettings.isClarificationWindow() ? new ClarificationProvider() : null)
                 .setDeviceSettings(deviceSettings);
         device = Device.createAndStart(deviceConfig);
         statusUtil.listenTo(device.device());

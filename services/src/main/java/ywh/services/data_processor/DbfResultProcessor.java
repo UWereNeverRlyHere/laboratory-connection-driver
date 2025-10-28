@@ -10,6 +10,7 @@ import ywh.commons.Task;
 import ywh.services.data.enums.ObservationKey;
 import ywh.services.data.enums.ProcessResult;
 import ywh.services.data.mapping.LocalObservationMapper;
+import ywh.services.data.mapping.SimpleObseravtionMapper;
 import ywh.services.data.models.ProcessorResult;
 import ywh.services.data.models.observation.ObservationData;
 import ywh.services.settings.data.FileResultProcessorSettings;
@@ -37,7 +38,7 @@ public class DbfResultProcessor {
 
 
     public ProcessorResult process(ObservationData data, DeviceLogger logger) {
-
+        SimpleObseravtionMapper.map(data);
         File dbfFile = getDbfFile(data);
         Path imagesDir = dbfFile.toPath().getParent();
         var result = new ProcessorResult(ProcessResult.SUCCESS, Optional.of(dbfFile));

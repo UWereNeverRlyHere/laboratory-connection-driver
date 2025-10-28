@@ -190,7 +190,7 @@ public class JsonRepositoryLoader {
                 // ВАЖЛИВО: Оновлюємо існуючий індикатор БЕЗ заміни analyzerCodes/orderCodes
                 updateIndicatorFromDto(existingIndicator, indicatorDto);
                 ConsoleUtil.printBlue("    ↻ Оновлено індикатор: " + code +
-                        " (зберігаємо analyzerCodes: " + existingIndicator.getCodeVariations().size() +
+                        " (зберігаємо analyzerCodes: " + existingIndicator.getVariations().size() +
                         ", orderCodes: " + existingIndicator.getOrderCodes().size() + ")");
             }
 
@@ -228,7 +228,7 @@ public class JsonRepositoryLoader {
 
         if (updated) {
             ConsoleUtil.printBlue("        ✓ Оновлено метадані індикатора " + existing.getCode() +
-                    " (analyzerCodes: " + existing.getCodeVariations().size() +
+                    " (analyzerCodes: " + existing.getVariations().size() +
                     ", orderCodes: " + existing.getOrderCodes().size() + ")");
         }
     }
