@@ -151,20 +151,19 @@ public class DeviceManager {
             SettingsBinder.fillAll(controller, deviceSettings);
             SettingsBinder.fillAll(controller.printAndFilesSettingsController, deviceSettings);
             SettingsBinder.fillAll(controller.apiConfigController, deviceSettings);
+            SettingsBinder.fillAll(controller.serialConfigController, deviceSettings);
 
+            controller.serialConfigController.selectPort(deviceSettings.getCommunicatorSettings().getSerialParams().getPortName());
+            controller.printAndFilesSettingsController.refreshPrinters();
+            controller.printAndFilesSettingsController.setPrinterFromSettings();
 
-            if (parser instanceof IParserWithFixedPort iParserWithFixedPort) {
-                controller.portField.setDisable(true);
-                controller.portField.setText(String.valueOf(iParserWithFixedPort.getDefaultPort()));
-            }
+            UiAccessibilityResolver.resolveForParser(controller, parser);
+
         } catch (Exception e) {
             // Якщо перший запуск або помилка в налаштуваннях - встановлюємо значення за замовчуванням
             setDefaultValues();
             MainLogger.error("Помилка під час читання налаштувань, використовуються значення за замовчуванням", e);
         }
-        controller.printAndFilesSettingsController.refreshPrinters();
-        controller.printAndFilesSettingsController.initializeButtons();
-        controller.printAndFilesSettingsController.setPrinterFromSettings();
 
     }
 
@@ -174,6 +173,7 @@ public class DeviceManager {
             SettingsBinder.commitAll(controller, deviceSettings);
             SettingsBinder.commitAll(controller.printAndFilesSettingsController, deviceSettings);
             SettingsBinder.commitAll(controller.apiConfigController, deviceSettings);
+            SettingsBinder.commitAll(controller.serialConfigController, deviceSettings);
 
             // Отримуємо глобальні налаштування і збираємо унікальні API налаштування
             var programSettings = EncryptedSettings.getCash();

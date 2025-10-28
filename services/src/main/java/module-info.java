@@ -28,12 +28,14 @@ module ywh.labs.services {
     opens ywh.services.data.models to com.google.gson,connection.driver.application;
     opens ywh.services.data.models.observation to com.google.gson,connection.driver.application;
     opens ywh.services.settings.data to com.google.gson,connection.driver.application;
+    opens ywh.services.data.serial_port to com.google.gson,connection.driver.application;
 
     exports ywh.services.device.parsers.fujifilm;
     exports ywh.services.device.parsers.ise;
     exports ywh.services.web;
     exports ywh.services.device.protocol.custom;
     exports ywh.services.tools;
+    exports ywh.services.device.parsers.hti;
 
 
 // Required modules
@@ -71,7 +73,5 @@ module ywh.labs.services {
     requires java.net.http;
     requires org.apache.commons.net;
     requires org.jfree.jfreechart;
-    requires ywh.labs.services;
     requires org.apache.commons.compress;
-
 }

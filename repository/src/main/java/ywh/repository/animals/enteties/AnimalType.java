@@ -13,6 +13,7 @@ public enum AnimalType {
     RABBIT(Arrays.asList("Кролик", "Кріль", "Кролик", "Кроль", "Rabbit"), "кролів"),
     RODENT(Arrays.asList("Гризуни", "Гризун", "Грызуны", "Грызун","Крыса", "Rodent"), "гризунів"),
     BIRD(Arrays.asList("Пташка", "Птах", "Птица", "Птичка", "Bird"), "птахів"),
+    PIG(Arrays.asList("Порося", "Свиня", "Свинья", "Порося", "Pig"), "свиней"),
     OTHER(Arrays.asList("Інше", "Різне", "Другое", "Прочее", "Other"), "інших"),
     UNDEFINED(Arrays.asList("Не визначено", "Не відомо", "Неизвестно", "Undefined"), "не визначених")
     ;

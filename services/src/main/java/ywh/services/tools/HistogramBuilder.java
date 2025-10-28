@@ -44,6 +44,7 @@ public final class HistogramBuilder {
 
     public interface MarkerStep {
         GraphStep withMarkers(List<String> lanes, boolean lanesWithCoeff);
+        MarkerStep withSmoothing(double sigma);
         GraphStep skipMarkers();                   // якщо маркери не потрібні
     }
 
@@ -56,7 +57,7 @@ public final class HistogramBuilder {
     private static final class Builder implements GraphStep, MarkerStep {
 
         /* ------------ модель одного графіка ------------ */
-        private record Task(String name, double max, List<String> points, List<String> lanes, boolean lanesWithCoeff) { }
+        private record Task(String name, double max, List<String> points, List<String> lanes, boolean lanesWithCoeff, double sigma) { }
 
         private final List<Task> tasks = new ArrayList<>();
 
@@ -64,6 +65,7 @@ public final class HistogramBuilder {
         private String      tmpName;
         private double      tmpMax;
         private List<String> tmpPoints;
+        private double      tmpSigma = 0.0;
 
         /* ===== GraphStep ===== */
         @Override
@@ -101,21 +103,27 @@ public final class HistogramBuilder {
 
         /* ===== MarkerStep ===== */
         @Override
+        public MarkerStep withSmoothing(double sigma) {
+            this.tmpSigma = Math.max(0.0, sigma);
+            return this;
+        }
+
+        @Override
         public GraphStep withMarkers(List<String> lanes, boolean lanesWithCoeff) {
-            tasks.add(new Task(tmpName, tmpMax, tmpPoints, lanes, lanesWithCoeff));
+            tasks.add(new Task(tmpName, tmpMax, tmpPoints, lanes, lanesWithCoeff, tmpSigma));
             clearTmp();
             return this;                    // → GraphStep
         }
 
         @Override
         public GraphStep skipMarkers() {
-            tasks.add(new Task(tmpName, tmpMax, tmpPoints, List.of(), false));
+            tasks.add(new Task(tmpName, tmpMax, tmpPoints, List.of(), false, tmpSigma));
             clearTmp();
             return this;                    // → GraphStep
         }
 
         private void clearTmp() {
-            tmpName = null; tmpPoints = null; tmpMax = 0;
+            tmpName = null; tmpPoints = null; tmpMax = 0; tmpSigma = 0.0;
         }
 
         /* ------------ логіка рендеру (адаптована з попередньої версії) ------------ */
@@ -129,6 +137,7 @@ public final class HistogramBuilder {
         private String renderGraph(Task t) {
             createChart(t.name);
             setDataset(t.points, t.max);
+            if (t.sigma > 0) applySmoothing(t.sigma);
             double coeff = t.lanesWithCoeff ? t.max / t.points.size() : 1;
             for (String lane : t.lanes) setMarker(String.valueOf(Double.parseDouble(lane) * coeff));
             generateImage();
@@ -206,6 +215,49 @@ public final class HistogramBuilder {
             NumberAxis rangeAxis = (NumberAxis) plot.getRangeAxis();
             rangeAxis.setAxisLineVisible(false);
             rangeAxis.setStandardTickUnits(NumberAxis.createIntegerTickUnits());
+        }
+
+        private void applySmoothing(double sigma) {
+            XYSeries src = dataset.getSeries(0);
+            int n = src.getItemCount();
+            double step = (n > 1)
+                    ? src.getX(1).doubleValue() - src.getX(0).doubleValue()
+                    : 1.0;                                    // fallback
+            double[] ys = new double[n];
+            for (int i = 0; i < n; i++) ys[i] = src.getY(i).doubleValue();
+
+            int radius = Math.max(1, (int) Math.round(sigma * 3));   // 3σ-правило
+            double[] kernel = buildGaussianKernel(radius, sigma);
+
+            double[] smoothed = new double[n];
+            for (int i = 0; i < n; i++) {
+                double acc = 0, norm = 0;
+                for (int k = -radius; k <= radius; k++) {
+                    int idx = i + k;
+                    if (idx < 0 || idx >= n) continue;
+                    double w = kernel[k + radius];
+                    acc += w * ys[idx];
+                    norm += w;
+                }
+                smoothed[i] = acc / norm;
+            }
+
+            // замінюємо існуючу серію новою
+            XYSeries smoothSeries = new XYSeries("");
+            for (int i = 0; i < n; i++) {
+                smoothSeries.add(i * step, smoothed[i]);
+            }
+            dataset.removeAllSeries();
+            dataset.addSeries(smoothSeries);
+        }
+
+        private double[] buildGaussianKernel(int radius, double sigma) {
+            double[] k = new double[2 * radius + 1];
+            double s2 = 2 * sigma * sigma;
+            for (int i = -radius; i <= radius; i++) {
+                k[i + radius] = Math.exp(-(i * i) / s2);
+            }
+            return k;
         }
     }
 }

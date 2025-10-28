@@ -99,7 +99,7 @@ public class ParsingContext {
 
     public ObservationData getCopyAndReset() {
         var data = new ObservationData(observationData);
-        if (TextUtils.isNullOrEmpty(id) && !TextUtils.isNotNullOrEmpty(tempId))
+        if (TextUtils.isNullOrEmpty(id) && TextUtils.isNotNullOrEmpty(tempId))
             data.putId(tempId);
         reset();
         return data;

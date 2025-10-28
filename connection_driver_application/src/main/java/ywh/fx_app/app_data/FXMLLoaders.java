@@ -12,7 +12,8 @@ public enum FXMLLoaders {
     CLARIFICATION_WINDOW("clarification/clarification-window.fxml"),
     CLARIFICATION_CONTAINER("clarification/clarification-container.fxml"),
     API_CONFIG("configs/api-config-window.fxml"),
-    FTP_CONFIG("configs/ftp-config-window.fxml")
+    FTP_CONFIG("configs/ftp-config-window.fxml"),
+    SERIAL_CONFIG("configs/serial-config-window.fxml"),
     ;
     private final String url;
 

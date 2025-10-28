@@ -16,7 +16,6 @@ import java.util.stream.Collectors;
         unmappedTargetPolicy = ReportingPolicy.IGNORE,
         nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
 public interface IndicatorMapper {
-
     // Замість автоматичного маппінгу - використовуємо кастомний метод
     default Indicator toEntity(AnimalIndicatorDto.IndicatorDto dto) {
         if (dto == null) {

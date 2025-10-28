@@ -50,6 +50,4 @@ module connection.driver.application {
     requires MaterialFX;
     requires atlantafx.base;
     requires javafx.graphics;
-
-
 }

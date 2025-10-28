@@ -9,10 +9,11 @@ dependencies {
     implementation(rootProject.libs.poiOoxml)
     implementation(rootProject.libs.pdfbox)
     implementation(rootProject.libs.jssc)
+    runtimeOnly(rootProject.libs.jssc)
+
     implementation(rootProject.libs.jnaPlatform)
     implementation(rootProject.libs.apacheCommonsNet)
     implementation(rootProject.libs.jfreeChart)
-
 }
 
 tasks.register<Copy>("copyTemplates") {

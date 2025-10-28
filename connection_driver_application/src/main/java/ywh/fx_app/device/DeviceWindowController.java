@@ -21,6 +21,7 @@ import ywh.fx_app.app_managers.DisableStateManager;
 import ywh.fx_app.app_utils.ClueMessage;
 import ywh.fx_app.application.AppStaticConfig;
 import ywh.fx_app.configs.ApiConfigWindowController;
+import ywh.fx_app.configs.SerialConfigWindowController;
 import ywh.services.data.enums.FileResultActions;
 import ywh.services.settings.data.CommunicatorSettings;
 import ywh.services.settings.data.DeviceSettings;
@@ -55,11 +56,16 @@ public class DeviceWindowController {
     @FXML
     public TitledPane printAndFilesSettings;
     @FXML
-    public TitledPane apiConfig;
-    @FXML
     public DevicePrintAndFilesController printAndFilesSettingsController;
     @FXML
+    public TitledPane apiConfig;
+    @FXML
     public ApiConfigWindowController apiConfigController;
+    @FXML
+    public TitledPane serialConfig;
+    public SerialConfigWindowController serialConfigController;
+
+
     @FXML
     @SettingsBind(targetModel = DeviceSettings.class, targetField = "serialNumber", binder = PropertyBinders.TEXT_FIELD)
     public MFXTextField serialNumberField;

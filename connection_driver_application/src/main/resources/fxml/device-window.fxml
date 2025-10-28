@@ -129,6 +129,7 @@
 
             <fx:include fx:id="printAndFilesSettings" source="device-print-file-settings-window.fxml"/>
             <fx:include fx:id="apiConfig" source="configs/api-config-window.fxml"/>
+            <fx:include fx:id="serialConfig" source="configs/serial-config-window.fxml"/>
 
         </VBox>
     </ScrollPane>

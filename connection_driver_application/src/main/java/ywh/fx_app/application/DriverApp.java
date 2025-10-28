@@ -106,8 +106,6 @@ public class DriverApp extends Application {
     }
 
 
-
-
     @Override
     public void init() throws Exception {
         super.init();
@@ -134,7 +132,7 @@ public class DriverApp extends Application {
 
 
         Platform.setImplicitExit(false);
-        
+
         MainLogger.info("Application initialized successfully");
     }
 
@@ -148,14 +146,18 @@ public class DriverApp extends Application {
         primaryStage.setY(-1000);
         primaryStage.setResizable(true);
         primaryStage.sizeToScene();
-
         instanceService.startActivationMonitoring(stage);
         // Tray має завантажитися до того, як завантажаться контроллери
         EncryptedSettings.load();
         TrayManager.createTray(primaryStage, this::exitApplication);
-        DeviceFactory.initialize();
+        try {
+            DeviceFactory.initialize();
+        } catch (Throwable t) {
+            MainLogger.error("DeviceFactory failed", t);
+        }
         MainLogger.info("Application started successfully");
     }
+
     /**
      * Правильний метод для завершення додатку
      */

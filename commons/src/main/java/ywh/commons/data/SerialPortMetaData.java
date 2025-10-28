@@ -23,6 +23,7 @@ public class SerialPortMetaData {
 
     @Override
     public String toString() {
+       // return this.name;
         return displayName();
     }
 

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<TitledPane fx:id="serialTitledPane"
+            styleClass="titled-pane-bold"
+            text="Налаштування Серійного порта"
+            xmlns="http://javafx.com/javafx/"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="ywh.fx_app.configs.SerialConfigWindowController">
+    <VBox spacing="5">
+
+        <MFXComboBox fx:id="portComboBox" allowEdit="false" floatingText="Port" maxWidth="1.7976931348623157E308">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </MFXComboBox>
+
+        <MFXComboBox fx:id="baudRateComboBox" allowEdit="false" floatingText="Baud Rate" maxWidth="1.7976931348623157E308">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </MFXComboBox>
+
+        <MFXComboBox fx:id="dataBitsComboBox" allowEdit="false" floatingText="Data Bits" maxWidth="1.7976931348623157E308">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </MFXComboBox>
+
+        <MFXComboBox fx:id="stopBitsComboBox" allowEdit="false" floatingText="Stop Bits" maxWidth="1.7976931348623157E308">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </MFXComboBox>
+
+        <MFXComboBox fx:id="parityComboBox" allowEdit="false" floatingText="Parity" maxWidth="1.7976931348623157E308">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </MFXComboBox>
+
+    </VBox>
+</TitledPane>

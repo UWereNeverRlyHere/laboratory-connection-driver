@@ -224,6 +224,10 @@ public enum PropertyBinders {
                 return null;
             }
 
+            if (targetType.isInstance(value)) {
+                return value;
+            }
+
             String valueStr = value.toString().trim();
             if (valueStr.isEmpty()) {
                 return null;

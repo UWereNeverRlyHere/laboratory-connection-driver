@@ -2,6 +2,7 @@ package ywh.fx_app.app_binders;
 
 import ywh.fx_app.app_exceptions.SettingsValidationException;
 import ywh.logging.MainLogger;
+import ywh.services.data.serial_port.SerialParams;
 import ywh.services.settings.data.*;
 
 import java.lang.reflect.Field;
@@ -10,6 +11,7 @@ import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class SettingsBinder {
+    private SettingsBinder() {}
 
     /**
      * Кеш метаданих біндингів для кожного класу контролера
@@ -143,6 +145,9 @@ public class SettingsBinder {
         if (model instanceof DeviceSettings deviceSettings) {
             if (targetModelClass == CommunicatorSettings.class) {
                 return deviceSettings.getCommunicatorSettings();
+            }
+            if (targetModelClass == SerialParams.class){
+                return deviceSettings.getCommunicatorSettings().getSerialParams();
             }
             if (targetModelClass == PrintSettings.class) {
                 return deviceSettings.getPrintSettings();
